@@ -3,6 +3,14 @@ angular.module('events.factories', [])
     return $resource('/api/events/:id', { id: '@id' }, {
         update: {
             method: 'PUT'
+        },
+        getAttendingCnt: {
+            method: 'GET',
+            url: '/api/events/:eventId/interested'
+        },
+        getInteresteedCnt: {
+            method: 'GET',
+            url: '/api/events/:eventId/going'
         }
     });
 }])
