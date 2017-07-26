@@ -5,7 +5,7 @@ exports.all = function() {
 }
 
 exports.read = function(id) {
-    return db.row('UserGet' [id])
+    return db.row('UserGet', [id])
 }
 
 exports.create = function(firstName, lastName, companyName, email, phone, password) {
@@ -13,9 +13,9 @@ exports.create = function(firstName, lastName, companyName, email, phone, passwo
 }
 
 exports.update = function(id,firstName, lastName, companyName, email, phone, password) {
-    return db.row('UserUpdate' [id,firstName, lastName, companyName, email, phone, password])
+    return db.empty('UserUpdate', [id,firstName, lastName, companyName, email, phone, password])
 }
 
 exports.destroy = function(id) {
-    return db.row('UserDelete' [id])
+    return db.empty('UserDelete', [id])
 }
