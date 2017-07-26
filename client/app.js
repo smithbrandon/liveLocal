@@ -14,10 +14,10 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
     //     templateUrl: 'views/compose.html',
     //     controller: 'ComposeEventController'
     // })
-    // .when('/:id', {
-    //     templateUrl: 'views/single.html',
-    //     controller: 'SingleEventController'
-    // })
+    .when('/event/:id', {
+    templateUrl: 'views/single.html',
+     controller: 'SingleEventController'
+    })
     .otherwise({
         redirectTo: '/'
     });
