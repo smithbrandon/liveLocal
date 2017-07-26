@@ -10,10 +10,10 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
     //     templateUrl: 'views/list.html',
     //     controller: 'EventListController'
     // })
-    // .when('/compose', {
-    //     templateUrl: 'views/compose.html',
-    //     controller: 'ComposeEventController'
-    // })
+    .when('/compose', {
+        templateUrl: 'views/compose.html',
+        controller: 'ComposeEventController'
+    })
     // .when('/:id', {
     //     templateUrl: 'views/single.html',
     //     controller: 'SingleEventController'
