@@ -12,3 +12,10 @@ exports.create = function(id) {
     return db.row('CategoryAdd', [id]);
 }
 
+exports.update = function(id, name) {
+    return db.empty('CategoryUpdate', [id, name]);
+}
+
+exports.destroy = function(id) {
+    return db.empty('CategoryDelete', [id]);
+}

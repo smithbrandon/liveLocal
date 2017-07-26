@@ -12,10 +12,14 @@ exports.destroy = function(eventId) {
     return db.empty('EventDelete', eventId);
 }
 
-exports.update = function(title, summary, description, images, categoryid) {
-    return db.empty('EventUpdate', [title, summary, description, images, categoryid]);
+exports.update = function(title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate) {
+    return db.empty('EventUpdate', [title,summary,	description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate]);
 }
 
-exports.create = function(title, summary, description, images, categoryid) {
-    return db.row('EventAdd', [title, summary, description, images, categoryid]);
+exports.create = function(id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate) {
+    return db.row('EventAdd', [id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate]);
 }
