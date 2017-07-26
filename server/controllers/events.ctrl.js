@@ -15,12 +15,8 @@ router.route('/')
 })
 .post(function(req, res) {
     var p = req.body;
-<<<<<<< HEAD
     procedures.create(p.title, p.summary, p.description, p.images, p.userId, p.tickets, p.ticketsUrl, p.eventUrl, p.petFriendly, p.familyFriendly,
 		p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status)
-=======
-    procedures.create(p.title, p.summary, p.description, p.images, p.userId, p.tickets, p.ticketsUrl, p.eventUrl, p.petFriendly, p.familyFriendly, p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status)
->>>>>>> ce6e1f636729fa8e2fa70ef10cef3e49aa938075
     .then(function(id) {
         res.status(201).send(id);
     }).catch(function(err) {

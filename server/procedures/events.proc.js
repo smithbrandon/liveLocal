@@ -12,7 +12,6 @@ exports.destroy = function(eventId) {
     return db.empty('EventDelete', eventId);
 }
 
-<<<<<<< HEAD
 exports.update = function(id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate) {
     return db.empty('EventUpdate', [id, title,summary,	description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
@@ -23,13 +22,6 @@ exports.create = function(title,summary,description,images,userId,tickets,ticket
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status) {
     return db.row('EventAdd', [title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status]);
-=======
-exports.update = function(id, title, summary, description, images, userId, tickets, ticketsUrl, eventUrl, petFriendly, familyFriendly, smokeFree, alcoholFree, outdoors, daytime, cost, isEighteen, isTwentyOne, startDate, endDate, status) {
-    return db.empty('EventUpdate', [id, title, summary,	description, images, userId, tickets, ticketsUrl, eventUrl,petFriendly, familyFriendly, smokeFree, alcoholFree, outdoors, daytime, cost, isEighteen, isTwentyOne,startDate, endDate, status]);
-}
-
-exports.create = function(title, summary, description, images, userId, tickets, ticketsUrl, eventUrl, petFriendly, familyFriendly, smokeFree, alcoholFree, outdoors, daytime, cost, isEighteen, isTwentyOne, startDate, endDate, status) {
-    return db.row('EventAdd', [title, summary, description, images, userId, tickets, ticketsUrl, eventUrl, petFriendly, familyFriendly, smokeFree, alcoholFree, outdoors, daytime, cost, isEighteen, isTwentyOne, startDate, endDate, status]);
 }
 
 exports.interestAdd = function(eventId,userId){
@@ -46,5 +38,4 @@ exports.goingAdd = function(eventId,userId){
 
 exports.goingGet = function(eventId){
     return db.row('goingGet',[eventId]);
->>>>>>> ce6e1f636729fa8e2fa70ef10cef3e49aa938075
 }

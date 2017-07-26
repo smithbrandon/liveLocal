@@ -10,14 +10,10 @@ angular.module('events.controllers', [])
 
 }])
 
-<<<<<<< HEAD
 // }])
 .controller('ComposeEventController', ['$scope', '$location', 'Event', function($scope, $location, Event) {
     
     $('[data-toggle="popover"]').popover();
-=======
-// .controller('ComposeEventController', ['$scope', '$location', function($scope, $location) {
->>>>>>> ce6e1f636729fa8e2fa70ef10cef3e49aa938075
 
     $scope.save = function() {
         var p = new Event($scope.event);
