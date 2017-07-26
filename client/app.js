@@ -6,10 +6,10 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/welcome.html',
         controller: 'WelcomeController'
     })
-    // .when('', {
-    //     templateUrl: 'views/list.html',
-    //     controller: 'EventListController'
-    // })
+    .when('/events', {
+        templateUrl: 'views/list.html',
+        controller: 'EventListController'
+    })
     // .when('/compose', {
     //     templateUrl: 'views/compose.html',
     //     controller: 'ComposeEventController'
