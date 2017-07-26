@@ -36,8 +36,6 @@ router.route('/:id')
     })
     .put(function(req, res){
         var p = req.body;
-        console.log(req.params.id);
-        console.log(p);
         procedures.update(req.params.id, p.firstName, p.lastName, p.companyName, p.email, p.phone, p.password)
         .then(function(user){
             res.sendStatus(204);
