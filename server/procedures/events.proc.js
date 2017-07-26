@@ -22,8 +22,12 @@ exports.create = function(title,summary,description,images,userId,tickets,ticket
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status) {
     return db.row('EventAdd', [title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status]);
+<<<<<<< HEAD
 }
 
+=======
+        }
+>>>>>>> 54db92668df96c44dbaa838a0cbea51061f1f8f7
 exports.interestAdd = function(eventId,userId){
     return db.row('interestAdd',[eventId,userId]);
 }

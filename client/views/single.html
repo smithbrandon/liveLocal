@@ -7,10 +7,11 @@ and a google map. -->
         <img src="{{ event.imageUrl }}">
         <div class="event-info">
 
-            <h3 class="price">{{ event.cost | currency }}</h3>
+           
             <h2>{{ event.title }}</h2>
-            <h2>{{ event.startDate | date: 'short' }}</h2>
-            <h2>{{ event.endDate | date: 'short' }}</h2>
+            <h3>{{ event.startDate | date: 'short' }}</h3>
+            <h3>{{ event.endDate | date: 'short' }}</h3>
+             <h4 class="price">{{ event.cost | currency }}</h4>
             <ul>
                 <li>{{ event.tickets }}</li>
                 <li>{{ event.ticketsUrl }}</li>
@@ -21,16 +22,15 @@ and a google map. -->
                 <li>{{ event.alcoholFree }}</li>
                 <li>{{ event.outdoors }}</li>
                 <li>{{ event.daytme }}</li>
-                <li>{{ event.isEightteen }}</li>
+                <li>{{ event.isEighteen }}</li>
                 <li>{{ event.isTwentyOne }}</li>
                 <li>{{ event.status }}</li>
             </ul>
 
             <p>{{ event.description }}</p>
           
-            <a href>button class="btn btn-info btn-sm" ng-click="???">Interested</a>
-            <a href>button class="btn btn-info btn-sm" ng-click="???">Definitely Going!</a>
+             <button type="button">Interested</button>
+            <button type="button">Definitely Going!</button>
         </div>
     </div>
 </div>
-            <p><a class="btn btn-info" role="button" ng-href="/{{ e.id }}">View Event</a></p>
