@@ -5,9 +5,11 @@ angular.module('events.controllers', [])
 .controller('EventListController', ['$scope', 'Event', function($scope, Event) {
     $scope.events = Event.query();
 }])
-// .controller('SingleEventController', ['$scope', '$routeParams', function($scope, $routeParams) {
+.controller('SingleEventController', ['$scope', '$routeParams', 'Event', function($scope, $routeParams, Event) {
+    $scope.event = Event.get({ id: $routeParams.id });
 
-// }])
+}])
+
 // .controller('ComposeEventController', ['$scope', '$location', function($scope, $location) {
 
 // }])

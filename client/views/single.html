@@ -1,14 +1,36 @@
-Add a view for displaying a single event. Should display all event details
-and a google map.
+<!-- Add a view for displaying a single event. Should display all event details
+and a google map. -->
 
-<div class="container-fluid">
+<div class="container event-list">
     
-    <div class>
-        <img src="{{ event.imageurl }}">
+    <div class="event-image">
+        <img src="{{ event.imageUrl }}">
         <div class="event-info">
-            <h3 class="price">{{ event.price | currency:usd:0 }}</h3>
+
+            <h3 class="price">{{ event.cost | currency }}</h3>
             <h2>{{ event.title }}</h2>
+            <h2>{{ event.startDate | date: 'short' }}</h2>
+            <h2>{{ event.endDate | date: 'short' }}</h2>
+            <ul>
+                <li>{{ event.tickets }}</li>
+                <li>{{ event.ticketsUrl }}</li>
+                <li>{{ event.eventUrl }}</li>
+                <li>{{ event.petFriendly }}</li>
+                <li>{{ event.familyFriendly }}</li>
+                <li>{{ event.smokeFree }}</li>
+                <li>{{ event.alcoholFree }}</li>
+                <li>{{ event.outdoors }}</li>
+                <li>{{ event.daytme }}</li>
+                <li>{{ event.isEightteen }}</li>
+                <li>{{ event.isTwentyOne }}</li>
+                <li>{{ event.status }}</li>
+            </ul>
+
             <p>{{ event.description }}</p>
-            <button class="btn btn-info btn-md" ng-click="addToCart()">Add To Cart</button>
+          
+            <a href>button class="btn btn-info btn-sm" ng-click="???">Interested</a>
+            <a href>button class="btn btn-info btn-sm" ng-click="???">Definitely Going!</a>
         </div>
     </div>
+</div>
+            <p><a class="btn btn-info" role="button" ng-href="/{{ e.id }}">View Event</a></p>
