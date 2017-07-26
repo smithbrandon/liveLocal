@@ -18,8 +18,8 @@ exports.update = function(title,summary,description,images,userId,tickets,ticket
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate]);
 }
 
-exports.create = function(id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+exports.create = function(title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate) {
-    return db.row('EventAdd', [id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
+    return db.row('EventAdd', [title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
 		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate]);
 }
