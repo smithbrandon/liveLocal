@@ -1,0 +1,14 @@
+Add a view for displaying a single event. Should display all event details
+and a google map.
+
+<div class="container-fluid">
+    
+    <div class>
+        <img src="{{ event.imageurl }}">
+        <div class="event-info">
+            <h3 class="price">{{ event.price | currency:usd:0 }}</h3>
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.description }}</p>
+            <button class="btn btn-info btn-md" ng-click="addToCart()">Add To Cart</button>
+        </div>
+    </div>
