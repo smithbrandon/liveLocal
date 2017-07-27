@@ -6,7 +6,7 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/welcome.html',
         controller: 'WelcomeController'
     })
-    .when('', {
+    .when('/events', {
         templateUrl: 'views/list.html',
         controller: 'EventListController'
     })
@@ -14,7 +14,7 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/compose.html',
         controller: 'ComposeEventController'
     })
-    .when('/:id', {
+    .when('/events/:id', {
         templateUrl: 'views/single.html',
         controller: 'SingleEventController'
     })
