@@ -39,3 +39,11 @@ exports.goingAdd = function(eventId,userId){
 exports.goingGet = function(eventId){
     return db.row('goingGet',[eventId]);
 }
+
+exports.addTag = function(eventId,tagId){
+    return db.empty('TagEvent',[eventId, tagId]);
+}
+
+exports.removeTag = function(eventId, tagId){
+    return db.empty('UntagEvent',[eventId, tagId])
+}

@@ -3,10 +3,6 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
     $locationProvider.html5Mode(true);
     $routeProvider
     .when('/', {
-        templateUrl: 'views/welcome.html',
-        controller: 'WelcomeController'
-    })
-    .when('/events', {
         templateUrl: 'views/list.html',
         controller: 'EventListController'
     })
@@ -21,4 +17,17 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
     .otherwise({
         redirectTo: '/'
     });
+}]).filter(['yesNo',function(){
+    return function(num){
+        if(isNAN(num) || num < 0){
+            return 'err';
+        }else{
+            if(num === 0){
+                return 'NO';
+            }else{
+                return 'YES';
+            }
+        }
+    }
 }]);
+

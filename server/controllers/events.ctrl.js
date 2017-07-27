@@ -94,5 +94,25 @@ router.route('/:id/going')
                 res.sendStatus(500);
             })
     })
-    
+router.post('/:id/tag', function(req,res){
+    console.log(req.params.id);
+    console.log(req.body.tag);
+    procedures.addTag(req.params.id,req.body.tag)
+    .then(function(tag){
+        res.sendStatus(201);
+    },function(err){
+        console.log(err);
+        res.sendStatus(500);
+    })
+});
+
+router.delete('/:eventId/tag/:id',function(req,res){
+    procedures.removeTag(req.params.eventId, req.params.id)
+    .then(function(tag){
+        res.sendStatus(204);
+    },function(err){
+        console.log(err);
+        res.sendStatus(500);
+    })
+});
 module.exports = router;

@@ -11,15 +11,35 @@ angular.module('events.factories', [])
         getInteresteedCnt: {
             method: 'GET',
             url: '/api/events/:eventId/going'
+        },
+        tagEvent: {
+            method: 'POST',
+            url: '/api/events/:eventId/tag'
+        },
+        untagEvent: {
+            method: 'DELETE',
+            url: '/api/events/:eventId/tag/:id'
         }
     });
 }])
 .factory('Category', ['$resource', function($resource) {
-    return $resource('/api/categories/:id');
+    return $resource('/api/categories/:id',{id: '@id'},{
+        update: {
+            method: 'PUT'
+        }
+    });
 }])
 .factory('Tag', ['$resource', function($resource) {
-    return $resource('/api/tags/:id');
+    return $resource('/api/tags/:id',{id: '@id'},{
+        update: {
+            method: 'PUT'
+        }
+    });
 }])
 .factory('User', ['$resource', function($resource) {
-    return $resource('/api/users/:id');
+    return $resource('/api/users/:id',{id: '@id'},{
+        update: {
+            method: 'PUT'
+        }
+    });
 }])

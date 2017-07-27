@@ -13,7 +13,7 @@ and a google map. -->
             <h3>{{ event.endDate | date: 'short' }}</h3>
              <h4 class="price">{{ event.cost | currency }}</h4>
             <ul>
-                <li>{{ event.tickets }}</li>
+                <li>{{ event.tickets | yesNo}}</li>
                 <li>{{ event.ticketsUrl }}</li>
                 <li>{{ event.eventUrl }}</li>
                 <li>{{ event.petFriendly }}</li>
