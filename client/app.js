@@ -10,9 +10,17 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/compose.html',
         controller: 'ComposeEventController'
     })
+    .when('/:id/update', {
+        templateUrl: 'views/update.html',
+        controller: 'UpdateEventController'
+    })
     .when('/events/:id', {
         templateUrl: 'views/single.html',
         controller: 'SingleEventController'
+    })
+    .when('/map',{
+        templateUrl: 'views/map.html',
+        controller: 'mapController'
     })
     .otherwise({
         redirectTo: '/'

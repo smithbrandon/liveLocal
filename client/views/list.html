@@ -1,15 +1,13 @@
+<div class="container-fluid">
 <div class="page-header row">
     <h1 class="col-sm-10 col-xs-12">Events</h1>
+</div>
+<div id="map"></div>
 </div>
 <div class="clear list-group container">
     <div class="list-group-item" ng-repeat="e in events">
         <h2>{{ e.title }}</h2>
         <h4>{{ e.summary }}</h4>
         <h5>{{ e.startDate | date: 'short' }}</h5>
-        <p><a class="btn btn-info" role="button" ng-href="/{{ e.id }}">View Event</a></p>
-        <p>Envelope icon as a link:
-  <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-</p>
-<span class="glyphicon glyphicon-usd"></span><br>
-    </div>
+        <p><a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a></p>
 </div>

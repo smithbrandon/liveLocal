@@ -13,9 +13,9 @@ exports.destroy = function(eventId) {
 }
 
 exports.update = function(id, title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
-		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate) {
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status) {
     return db.empty('EventUpdate', [id, title,summary,	description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
-		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate]);
+		smokeFree,alcoholFree,outdoors,daytime,cost,isEighteen,isTwentyOne,startDate,endDate, status]);
 }
 
 exports.create = function(title,summary,description,images,userId,tickets,ticketsUrl,eventUrl,petFriendly,familyFriendly,
