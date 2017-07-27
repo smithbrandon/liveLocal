@@ -49,11 +49,13 @@
             21+:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 21?</p>" data-html="true"></span><br>
                 <input ng-model="event.isTwentyOne" type="radio" name="age21" value="1">Yes
                 <input ng-model="event.isTwentyOne" type="radio" name="age21" value="0">N0<br>
-            Start Date & Time:<br>
+            Start Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
                 <input ng-model="event.startDate" type="datetime-local" name="startdate" value=""><br>
-            End Date & Time:<br>
+            End Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
                 <input ng-model="event.endDate" type="datetime-local" name="enddate" value=""><br>
-                <input ng-model="event.userId" type="number" value="1">
+            User Id:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
+                <input ng-model="event.userId" type="number" value="1"><br>
+            Status:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
                 <input ng-model="event.status" type="number" value="1">
         </div>
             <input type="submit" value="Submit">
