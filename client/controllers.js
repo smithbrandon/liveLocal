@@ -23,3 +23,16 @@ angular.module('events.controllers', [])
     }
 
 }])
+.controller('UpdateEventController', ['$scope', '$location','$routeParams', 'Event', function($scope, $location, $routeParams, Event) {
+    Event.get({id: $routeParams.id}, function(success) {
+        $scope.event = success;
+    })
+    $('[data-toggle="popover"]').popover();
+
+    $scope.save = function() {
+        $scope.event.$update(function() {
+            $location.replace().path('/' + $routeParams.id);
+        })
+    }
+
+}])
