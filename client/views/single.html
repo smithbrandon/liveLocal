@@ -13,18 +13,18 @@ and a google map. -->
             <h3>{{ event.endDate | date: 'short' }}</h3>
              <h4 class="price">{{ event.cost | currency }}</h4>
             <ul>
-                <li>{{ event.tickets}}</li>
-                <li>{{ event.ticketsUrl }}</li>
-                <li>{{ event.eventUrl }}</li>
-                <li>{{ event.petFriendly | yesNo }}</li>
-                <li>{{ event.familyFriendly }}</li>
-                <li>{{ event.smokeFree }}</li>
-                <li>{{ event.alcoholFree }}</li>
-                <li>{{ event.outdoors }}</li>
-                <li>{{ event.daytme }}</li>
-                <li>{{ event.isEighteen }}</li>
-                <li>{{ event.isTwentyOne }}</li>
-                <li>{{ event.status }}</li>
+                <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
+                <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
+                <li>Event website if applicable: {{ event.eventUrl }}</li>
+                <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
+                <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
+                <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
+                <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
+                <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
+                <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
+                <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
+                <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
+                <li>Is the event on the future...not sure what to put here?: {{ event.status }}</li>
             </ul>
 
             <p>{{ event.description }}</p>
