@@ -1,7 +1,7 @@
 angular.module('events.controllers', [])
-// .controller('WelcomeController', ['$scope', function($scope) {
+ .controller('WelcomeController', ['$scope', function($scope) {
 
-// }])
+}])
 .controller('EventListController', ['$scope', 'Event', function($scope, Event) {
     $scope.events = Event.query();
 }])
@@ -9,8 +9,6 @@ angular.module('events.controllers', [])
     $scope.event = Event.get({ id: $routeParams.id });
 
 }])
-
-// }])
 .controller('ComposeEventController', ['$scope', '$location', 'Event', function($scope, $location, Event) {
     
     $('[data-toggle="popover"]').popover();
