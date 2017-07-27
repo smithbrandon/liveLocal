@@ -21,9 +21,9 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
     .otherwise({
         redirectTo: '/'
     });
-}]).filter(['yesNo',function(){
+}]).filter('yesNo',function(){
     return function(num){
-        if(isNAN(num) || num < 0){
+        if(isNaN(num) || num < 0){
             return 'err';
         }else{
             if(num === 0){
@@ -33,5 +33,5 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
             }
         }
     }
-}]);
+});
 
