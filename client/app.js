@@ -10,7 +10,7 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/compose.html',
         controller: 'ComposeEventController'
     })
-    .when('/:id/update', {
+    .when('/events/:id/update', {
         templateUrl: 'views/update.html',
         controller: 'UpdateEventController'
     })
