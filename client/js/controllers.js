@@ -1,6 +1,11 @@
 angular.module('events.controllers', [])
-    .controller('EventListController', ['$scope', 'Event', function ($scope, Event) {
-        $scope.events = Event.query();
+    .controller('EventListController', ['$scope', 'Event','$http', function ($scope, Event,$http) {
+        $scope.events = Event.query(function(success){
+            for (var i =0;i<success.length;i++){
+                $scope.events[i].coord = getLatLng(success[i].address1,success[i].city,success[i].state);
+            }
+            $scope.initialize();
+        });
 
         $scope.initialize = function () {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -8,25 +13,41 @@ angular.module('events.controllers', [])
                 center: new google.maps.LatLng(35.032616, -85.314063),
                 mapTypeId: 'terrain',
                 disableDefaultUI: true,
-                draggable: false,
+                // draggable: false,
                 fullscreenControl: false,
                 zoomControl: false,
-                zoomControlOptions: false,
-                scrollwheel: false
+                zoomControlOptions: false
+                // scrollwheel: false
 
             });
-            var results = [[35.032616, -85.314063],[35.037261,-85.306198]];
 
-            for (var i = 0; i < results.length; i++) {
-                var coords = results[i];
-                var latLng = new google.maps.LatLng(coords[0], coords[1]);
+            for (var i = 0; i < $scope.events.length; i++) {
+                var lat = $scope.events[i].coord.lat;
+                var lng = $scope.events[i].coord.lng;
+                console.log($scope.events[i].coord);
+                var latLng = new google.maps.LatLng(lat, lng);
                 var marker = new google.maps.Marker({
                     position: latLng,
                     map: map
                 });
             }
         }
-        google.maps.event.addDomListener(window, 'load', $scope.initialize);
+
+        function getLatLng(address, city, state, zip){
+            var addressSan = address.replace(' ','+');
+            var citySan = city.replace(' ','+');
+            var coord = {};
+            $http({
+                mehtod: 'GET',
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
+            }).then(function(success){
+                coord.lat = success.data.results[0].geometry.location.lat;
+                coord.lng = success.data.results[0].geometry.location.lng;
+            },function(err){
+                console.log(err);
+            })
+            return coord;
+        }
 
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event', function ($scope, $routeParams, Event) {
