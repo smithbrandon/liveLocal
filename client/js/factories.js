@@ -42,4 +42,4 @@ angular.module('events.factories', [])
             method: 'PUT'
         }
     });
-}])
+}]);
