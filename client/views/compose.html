@@ -5,68 +5,151 @@
     </div>
     <form ng-submit="save()" class="my-form">
         <div class="form-group">
-            Event Name:<br>
-                <input ng-model="event.title" size="50" type="text" name="title" required><br>
-            Summary:<br>
-                <textarea ng-model="event.summary" rows="7" cols="48" type="text" name="summary" required></textarea><br>
-            Description:<br>
-                <textarea ng-model="event.description" rows="10" cols="48" type="text" name="description" required></textarea><br>
-            Event Address 1:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span><br>
-                <input ng-model="event.address1" size="50" type="text" name="address1"><br>
-            Event Address 2:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span><br>
+            Event Name:
+            <br>
+            <input ng-model="event.title" size="50" type="text" name="title" required><br>
+            
+            Summary:
+            <br>
+            <textarea ng-model="event.summary" rows="7" cols="48" type="text" name="summary" required></textarea><br>
+            
+            Description:
+            <br>
+            <textarea ng-model="event.description" rows="10" cols="48" type="text" name="description" required></textarea><br>
+            
+            Event Address 1:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span><br>
+            <input ng-model="event.address1" size="50" type="text" name="address1"><br>
+            
+            Event Address 2:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span><br>
                 <input ng-model="event.address2" size="50" type="text" name="address2"><br>
-            City:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The city of the event." data-html="true"></span><br>
-                <input ng-model="event.city" size="50" type="text" name="city"><br>
-            State:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The state of the event." data-html="true"></span><br>
-                <input ng-model="event.state" size="50" type="text" name="state"><br>
-            Zip:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The zipcode of the event." data-html="true"></span><br>
-                <input ng-model="event.zip" size="50" type="text" name="zip"><br>
-            Image:<br>
-                <input ng-model="event.images" size="50" type="text" name="image"><br>
-            Tickets:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event require a ticket to enter?</p>" data-html="true"></span><br>
-                <input ng-model="event.tickets" type="radio" name="ticket" value="1">Yes
-                <input ng-model="event.tickets" type="radio" name="ticket" value="0">No<br>
-            Ticket URL:<br>
-                <input ng-model="event.ticketUrl" size="50" type="text" name="ticketurl"><br>
-            Event URL:<br>
-                <input ng-model="event.eventUrl" size="50" type="text" name="eventurl"><br>
-            Pet Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span><br>
-                <input ng-model="event.petFriendly" type="radio" name="pet" value="1">Yes
-                <input ng-model="event.petFriendly" type="radio" name="pet" value="0">No<br>
-            Family Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Will the event have a family atsmosphere and/or be suitable for children?" data-html="true"></span><br>
-                <input ng-model="event.familyFriendly" type="radio" name="family" value="1">Yes
-                <input ng-model="event.familyFriendly" type="radio" name="family" value="0">No<br>
-            Smoke Free:<br>
-                <input ng-model="event.smokeFree" type="radio" name="smokefree" value="1">Yes
-                <input ng-model="event.smokeFree" type="radio" name="smokefree" value="0">No<br>
-            Alcohol Free:<br>
-                <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="1">Yes
-                <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="0">No<br>
-            Event Setting:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event be an outdoor or indoor event?</p>" data-html="true"></span><br>
-                <input ng-model="event.outdoors" type="radio" name="eventsetting1" value="1">Outdoor
-                <input ng-model="event.outdoors" type="radio" name="eventsetting2" value="0">Indoor<br>
-            Event Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event during the day or night?</p>" data-html="true"></span><br>
-                <input ng-model="event.daytime" type="radio" name="eventtime1" value="1">Day
-                <input ng-model="event.daytime" type="radio" name="eventtime2" value="0">Night<br>         
-            Cost:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Event Costs:</h6><ul><li>$ = $1-$20</li><li>$$ = $21-$50</li><li>$$$ = $50+</li></ul" data-html="true"></span><br>              
-                <input ng-model="event.cost" type="radio" name="cost" value="0">Free
-                <input ng-model="event.cost" type="radio" name="cost" value="1"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                <input ng-model="event.cost" type="radio" name="cost" value="2"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                <input ng-model="event.cost" type="radio" name="cost" value="3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><br>
-            18+:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 18?</p>" data-html="true"></span><br>
-                <input ng-model="event.isEighteen" type="radio" name="age18" value="1">Yes
-                <input ng-model="event.isEighteen" type="radio" name="age18" value="0">No<br>
-            21+:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 21?</p>" data-html="true"></span><br>
-                <input ng-model="event.isTwentyOne" type="radio" name="age21" value="1">Yes
-                <input ng-model="event.isTwentyOne" type="radio" name="age21" value="0">N0<br>
-            Start Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
-                <input ng-model="event.startDate" type="datetime-local" name="startdate" value=""><br>
-            End Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
-                <input ng-model="event.endDate" type="datetime-local" name="enddate" value=""><br>
-            User Id:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
-                <input ng-model="event.userId" type="number" value="1"><br>
-            Status:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
-                <input ng-model="event.status" type="number" value="1">
+            
+            City:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The city of the event." data-html="true"></span><br>
+            <input ng-model="event.city" size="50" type="text" name="city"><br>
+        
+            State:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The state of the event." data-html="true"></span><br>
+            <input ng-model="event.state" size="50" type="text" name="state"><br>
+        
+            Zip:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The zipcode of the event." data-html="true"></span><br>
+            <input ng-model="event.zip" size="50" type="text" name="zip"><br>
+        
+            Image:
+            <br>
+            <input ng-model="event.images" size="50" type="text" name="image"><br>
+        
+            Tickets:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event require a ticket to enter?</p>" data-html="true"></span><br>
+            <input ng-model="event.tickets" type="radio" name="ticket" value="1">Yes
+            <input ng-model="event.tickets" type="radio" name="ticket" value="0">No<br>
+        
+            Ticket URL:
+            <br>
+            <input ng-model="event.ticketUrl" size="50" type="text" name="ticketurl"><br>
+        
+            Event URL:
+            <br>
+            <input ng-model="event.eventUrl" size="50" type="text" name="eventurl"><br>
+        
+            Pet Friendly:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span><br>
+            <input ng-model="event.petFriendly" type="radio" name="pet" value="1">Yes
+            <input ng-model="event.petFriendly" type="radio" name="pet" value="0">No<br>
+        
+            Family Friendly:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Will the event have a family atsmosphere and/or be suitable for children?" data-html="true"></span><br>
+            <input ng-model="event.familyFriendly" type="radio" name="family" value="1">Yes
+            <input ng-model="event.familyFriendly" type="radio" name="family" value="0">No<br>
+        
+            Smoke Free:
+            <br>
+            <input ng-model="event.smokeFree" type="radio" name="smokefree" value="1">Yes
+            <input ng-model="event.smokeFree" type="radio" name="smokefree" value="0">No<br>
+        
+            Alcohol Free:
+            <br>
+            <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="1">Yes
+            <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="0">No<br>
+        
+            Event Setting:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event be an outdoor or indoor event?</p>" data-html="true"></span><br>
+            <input ng-model="event.outdoors" type="radio" name="eventsetting1" value="1">Outdoor
+            <input ng-model="event.outdoors" type="radio" name="eventsetting2" value="0">Indoor<br>
+        
+            Time of Day:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event during the day or night?</p>" data-html="true"></span><br>
+            <input ng-model="event.daytime" type="radio" name="eventtime1" value="1">Day
+            <input ng-model="event.daytime" type="radio" name="eventtime2" value="0">Night<br>         
+        
+            Cost:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Event Costs:</h6><ul><li>$ = $1-$20</li><li>$$ = $21-$50</li><li>$$$ = $50+</li></ul" data-html="true"></span><br>              
+            <input ng-model="event.cost" type="radio" name="cost" value="0">Free
+            <input ng-model="event.cost" type="radio" name="cost" value="1"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+            <input ng-model="event.cost" type="radio" name="cost" value="2"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+            <input ng-model="event.cost" type="radio" name="cost" value="3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><br>
+        
+            18+:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 18?</p>" data-html="true"></span><br>
+            <input ng-model="event.isEighteen" type="radio" name="age18" value="1">Yes
+            <input ng-model="event.isEighteen" type="radio" name="age18" value="0">No<br>
+        
+            21+:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 21?</p>" data-html="true"></span><br>
+            <input ng-model="event.isTwentyOne" type="radio" name="age21" value="1">Yes
+            <input ng-model="event.isTwentyOne" type="radio" name="age21" value="0">N0<br>
+            
+            Event Start Date & Time:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input ng-model="event.startDate" id="startDate" type='text' class="form-control" />
+                                <span class="input-group-addon" id="input-select">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            Event End Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input ng-model="event.endDate" id="endDate" type='text' class="form-control" />
+                                <span class="input-group-addon" id="input-select">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Start Date & Time:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
+            <input ng-model="event.startDate" type="datetime-local" name="startdate" value=""><br>
+        
+            End Date & Time:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span><br>
+            <input ng-model="event.endDate" type="datetime-local" name="enddate" value=""><br> -->
+        
+            User Id:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
+            <input ng-model="event.userId" type="number" value="1"><br>
+        
+            Status:
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span><br>
+            <input ng-model="event.status" type="number" value="1">
         </div>
             <input type="submit" value="Submit">
     </form>
