@@ -1,13 +1,22 @@
 <div class="container-fluid">
-<div class="page-header row">
-    <h1 class="col-sm-10 col-xs-12">Events</h1>
+    <div class="page-header row">
+        <h1 class="col-sm-10 col-xs-12">Events</h1>
+    </div>
 </div>
 <div id="map"></div>
-</div>
-<div class="clear list-group container">
+<flex-slider slide="e in events track by $index">
+	<li>
+		<h2>{{ e.title }}</h2>
+        <h4>{{ e.summary }}</h4>
+        <h5>{{ e.startDate | date: 'short' }}</h5>
+        <p><a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a></p>
+	</li>
+</flex-slider>
+
+<!-- <div class="clear list-group container">
     <div class="list-group-item" ng-repeat="e in events">
         <h2>{{ e.title }}</h2>
         <h4>{{ e.summary }}</h4>
         <h5>{{ e.startDate | date: 'short' }}</h5>
         <p><a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a></p>
-</div>
+</div> -->
