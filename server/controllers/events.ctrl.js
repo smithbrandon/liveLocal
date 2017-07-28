@@ -15,8 +15,10 @@ router.route('/')
 })
 .post(function(req, res) {
     var p = req.body;
+    console.log(p.startDate);
+    console.log(p.endDate);
     procedures.create(p.title, p.summary, p.description, p.images, p.userId, p.tickets, p.ticketsUrl, p.eventUrl, p.petFriendly, p.familyFriendly,
-		p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status, p.address1, p.address2, p.city, p.state, p.zip)
+		p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status, p.address1, p.address2, p.city, p.state, p.zip, p.lat, p.lng)
     .then(function(id) {
         res.status(201).send(id);
     }).catch(function(err) {
@@ -37,7 +39,7 @@ router.route('/:id')
     })
     .put(function(req, res) {
         var p = req.body;
-        procedures.update(req.params.id, p.title, p.summary, p.description, p.images, p.userId, p.tickets, p.ticketsUrl, p.eventUrl, p.petFriendly, p.familyFriendly, p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status, p.address1, p.address2, p.city, p.state, p.zip)
+        procedures.update(req.params.id, p.title, p.summary, p.description, p.images, p.userId, p.tickets, p.ticketsUrl, p.eventUrl, p.petFriendly, p.familyFriendly, p.smokeFree, p.alcoholFree, p.outdoors, p.daytime, p.cost, p.isEighteen, p.isTwentyOne, p.startDate, p.endDate, p.status, p.address1, p.address2, p.city, p.state, p.zip, p.lat, p.lng)
         .then(function() {
             res.sendStatus(204);
         }).catch(function(err) {
