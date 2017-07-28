@@ -19,3 +19,7 @@
     height: 34px;
     float: left;
  }
+
+ textarea{
+     resize: none;
+ }
