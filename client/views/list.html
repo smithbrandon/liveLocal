@@ -1,3 +1,7 @@
+<div class="jumbotron">
+    
+</div>
+
 <div class="container-fluid">
     <img id="heroImg" src="/img/lookouts_hor.jpg">
     <div class="page-header row">
@@ -14,10 +18,21 @@
 	</li>
 </flex-slider>
 
-<!-- <div class="clear list-group container">
-    <div class="list-group-item" ng-repeat="e in events">
-        <h2>{{ e.title }}</h2>
-        <h4>{{ e.summary }}</h4>
-        <h5>{{ e.startDate | date: 'short' }}</h5>
-        <p><a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a></p>
-</div> -->
+ <div class="clear list-group container">
+     <div class="row">
+        <div class="list-group-item col-xs-12 col-md-4 col-sm-8" ng-repeat="e in events">
+            <a ng-href="/events/{{e.id}}">
+                <div class="event-thumbnail" class="thumbnail image-thumbnail">
+                    <div class="event-images" ng-style="{ 'background-image': 'url(' + e.images + ')' }" class="thumbnail image-thumbnail">
+                        <a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a>
+                    </div>
+                    <div>
+                        <h4>{{ e.title }}</h4>
+                        <p>{{ e.summary }}</p>
+                        <h5>{{ e.startDate | date: 'short' }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div> 
+</div> 

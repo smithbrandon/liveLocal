@@ -20,6 +20,20 @@
     float: left;
  }
 
+<<<<<<< HEAD
  textarea{
      resize: none;
+=======
+ /*List-page!!!!*/
+
+ .event-thumbnail {
+     height: 300px;
+     width: 300px;
+ }
+ .event-images{
+     height: 150px;
+     width: 100%;
+     display: block;
+     background-size: contain;
+>>>>>>> 4d8a9ccea6f26ffdb78fde2228a3b54e832115b2
  }
