@@ -1,7 +1,15 @@
 #map{
     height: 200px;
 }
-
+.content-wrapper{
+    width: 100%;
+    max-width: 1440px;
+    display: block;
+    margin: 0 auto;
+}
+#heroImg{
+    width: 100%;
+}
 #startDate, #endDate{
    width : 177px;
  }
