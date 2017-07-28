@@ -1,15 +1,24 @@
 <!-- Add a view for displaying a single event. Should display all event details
 and a google map. -->
 
+<div class="container-fluid">
+    <img id="heroImg" src="/img/lookouts_hor.jpg">
+</div>
+
+<div id="map">
+</div>
+
 <div class="container event-list">
-    
     <div class="event-image">
         <img src="{{ event.imageUrl }}">
         <div class="event-info">
-            
-<div id="map">
+            <div class="page-header row">
+        <h1 class="col-sm-10 col-xs-12">Selected Event</h1>
+    </div>
+
+        </div>
+    </div>
 </div>
-           
             <h2>{{ event.title }}</h2>
             <h3>{{ event.startDate | date: 'short' }}</h3>
             <h3>{{ event.endDate | date: 'short' }}</h3>
@@ -31,7 +40,7 @@ and a google map. -->
                 <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
                 <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
                 <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
-                <li>Is the event on the future...not sure what to put here?: {{ event.status }}</li>
+                <!-- <li>This line reflects event.status...I don't think we need status on this page: {{ event.status }}</li> -->
             </ul>
 
             <p>{{ event.description }}</p>
