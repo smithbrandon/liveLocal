@@ -6,7 +6,14 @@ angular.module('events.controllers', [])
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: new google.maps.LatLng(35.032616, -85.314063),
-                mapTypeId: 'terrain'
+                mapTypeId: 'terrain',
+                disableDefaultUI: true,
+                draggable: false,
+                fullscreenControl: false,
+                zoomControl: false,
+                zoomControlOptions: false,
+                scrollwheel: false
+
             });
             var results = [[35.032616, -85.314063],[35.037261,-85.306198]];
 
@@ -37,6 +44,27 @@ angular.module('events.controllers', [])
             }, function (err) {
                 console.log(err);
             });
+        }
+
+    }])
+    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event', function ($scope, $location, $routeParams, Event) {
+
+        $('#startDate').datetimepicker();
+        $('#endDate').datetimepicker();
+
+        Event.get({id: $routeParams.id}, function(success) {
+            $scope.event = success;
+            $scope.event.startDate = moment(moment.utc(success.startDate).toDate()).format('MM/DD/YYYY hh:mm A');
+            $scope.event.endDate = moment(moment.utc(success.endDate).toDate()).format('MM/DD/YYYY hh:mm A');
+        })
+
+        $scope.save = function() {
+            $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+            $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+
+            $scope.event.$update(function() {
+                $location.replace().path('/' + $routeParams.id);
+            })
         }
 
     }])

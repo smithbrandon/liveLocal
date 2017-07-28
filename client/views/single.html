@@ -6,11 +6,18 @@ and a google map. -->
     <div class="event-image">
         <img src="{{ event.imageUrl }}">
         <div class="event-info">
-
+            
+<div id="map">
+</div>
            
             <h2>{{ event.title }}</h2>
             <h3>{{ event.startDate | date: 'short' }}</h3>
             <h3>{{ event.endDate | date: 'short' }}</h3>
+            <h3>{{ event.address1 }}</h3>
+            <h3>{{ event.address2 }}</h3>
+            <h3>{{ event.city }}</h3>
+            <h3>{{ event.state }}</h3>
+            <h3>{{ event.zip }}</h3>
              <h4 class="price">{{ event.cost | currency }}</h4>
             <ul>
                 <li>Are tickets required?: {{ event.tickets | yesNo }}</li>

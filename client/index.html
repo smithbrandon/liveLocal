@@ -17,6 +17,7 @@
         <meta property="description" content="{{ seo.description }}">
         <meta property="og:description" content="{{ seo.description }}">
         <meta property="twitter:description" content="{{ seo.description }}">
+<<<<<<< HEAD
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" 
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -36,14 +37,32 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
         <link rel="stylesheet" href="flexslider.css"></link>
+=======
+        
+        <!-- All CSS Files -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/flexslider.min.css"> 
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+>>>>>>> 9d357be9716e500934844ad5057a01b8be4b51f8
     </head>
     <body>
           <!--navbar-->
-        
-        <div ng-view></div>
+        <div ng-view class="content-wrapper"></div>
+
+        <!-- 3rd Party Library Files -->
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI" async defer></script>
+
+        <!-- Angular Javascript Files -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
+<<<<<<< HEAD
         <script src="app.js"></script>
         <script src="controllers.js"></script>
         <script src="factories.js"></script>
@@ -57,5 +76,16 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
+=======
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/jquery.flexslider-min.js"></script>
+        <script src="/lib/angular-flexslider.js"></script>
+        
+        <!-- Angular Resource Files -->
+        <script src="/js/app.js"></script>
+        <script src="/js/controllers.js"></script>
+        <script src="/js/factories.js"></script>
+        <script src="/js/services.js"></script>
+
+>>>>>>> 9d357be9716e500934844ad5057a01b8be4b51f8
     </body>
 </html>
