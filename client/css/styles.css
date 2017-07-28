@@ -19,3 +19,16 @@
     height: 34px;
     float: left;
  }
+
+ /*List-page!!!!*/
+
+ .event-thumbnail {
+     height: 300px;
+     width: 300px;
+ }
+ .event-images{
+     height: 150px;
+     width: 100%;
+     display: block;
+     background-size: contain;
+ }
