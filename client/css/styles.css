@@ -20,6 +20,9 @@
     float: left;
  }
 
+ textarea{
+     resize: none;
+ }
  /*List-page!!!!*/
 
  .event-thumbnail {
