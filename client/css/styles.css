@@ -27,7 +27,8 @@
 
  .event-thumbnail {
      height: 300px;
-     width: 300px;
+     width: 275px;
+     /*margin: 5px 5px 5px 5px;*/
  }
  .event-images{
      height: 150px;
@@ -35,3 +36,14 @@
      display: block;
      background-size: contain;
  }
+ .flex-event-image {
+     height: 150px;
+     width: 30%;
+     display: block;
+     background-size: contain;
+
+ }
+
+.flex-event-text{
+    float: right;
+}
