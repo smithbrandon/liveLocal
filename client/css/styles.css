@@ -13,7 +13,19 @@
 #startDate, #endDate{
    width : 177px;
  }
-
+.cartEmblem{
+    color: white;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin-top: 25px;
+    margin-left: 10px;
+    font-size: 21px;
+    line-height: 25px;
+    text-align: center;
+    border-radius:50%;
+    background-color: RGBA(63, 176, 192, 1.00);
+}
 #input-select {
     width: 37px; 
     height: 34px;
@@ -22,12 +34,21 @@
 
  textarea{
      resize: none;
+     height: 200px;
+     background-color: #e8e8ee;
  }
+ input{
+     background-color: #e8e8ee;
+ }   
+.form-rounded {
+    border-radius: 5px;
+}   
  /*List-page!!!!*/
 
  .event-thumbnail {
      height: 300px;
-     width: 300px;
+     width: 275px;
+     /*margin: 5px 5px 5px 5px;*/
  }
  .event-images{
      height: 150px;
@@ -35,3 +56,14 @@
      display: block;
      background-size: contain;
  }
+ .flex-event-image {
+     height: 150px;
+     width: 30%;
+     display: block;
+     background-size: contain;
+
+ }
+
+.flex-event-text{
+    float: right;
+}

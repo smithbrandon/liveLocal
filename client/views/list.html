@@ -10,12 +10,18 @@
 </div>
 <div id="map"></div>
 <flex-slider slide="e in events track by $index">
-	<li>
-		<h2>{{ e.title }}</h2>
-        <h4>{{ e.summary }}</h4>
-        <h5>{{ e.startDate | date: 'short' }}</h5>
-        <p><a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a></p>
-	</li>
+	            <li>
+                    <div class="event-thumbnail" class="thumbnail image-thumbnail">
+                    <div class="event-images" ng-style="{ 'background-image': 'url(' + e.images + ')' }" class="thumbnail image-thumbnail">
+                        <a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a>
+                    </div>
+                    <div class="flex-event-text">
+		            <h4>{{ e.title }}</h4>
+                    <p>{{ e.summary }}</p>
+                    <h5>{{ e.startDate | date: 'short' }}</h5>
+                    </div>
+                    </div>
+                </li>
 </flex-slider>
 
  <div class="clear list-group container">
