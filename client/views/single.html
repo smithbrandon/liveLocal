@@ -5,10 +5,64 @@ and a google map. -->
     <img id="heroImg" src="/img/lookouts_hor.jpg">
 </div>
 
-<div id="map">
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-8 col-md-6">
+            <div class="event-image">
+                <img src="{{ event.image.url }}">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-6">
+            <p>{{ event.description }}</p>
+            <button type="button">Interested</button>
+            <button type="button">Definitely Going!</button>
+        </div>
+    </div>
 </div>
 
-<div class="container event-list">
+<!-- This box holds the bullets  -->
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+        <h2>{{ event.title }}</h2>
+        <h3>{{ event.startDate | date: 'short' }}</h3>
+        <h3>{{ event.endDate | date: 'short' }}</h3>
+        <h3>{{ event.address1 }}</h3>
+        <h3>{{ event.address2 }}</h3>
+        <h3>{{ event.city }}</h3>
+        <h3>{{ event.state }}</h3>
+        <h3>{{ event.zip }}</h3>
+        <h4 class="price">{{ event.cost | currency }}</h4>
+        <ul>
+            <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
+            <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
+            <li>Event website if applicable: {{ event.eventUrl }}</li>
+            <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
+            <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
+            <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
+            <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
+            <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
+            <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
+            <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
+            <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+        <div id="map">
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+<!-- <div class="container event-list">
     <div class="event-image">
         <img src="{{ event.imageUrl }}">
         <div class="event-info">
@@ -18,35 +72,4 @@ and a google map. -->
 
         </div>
     </div>
-</div>
-            <h2>{{ event.title }}</h2>
-            <h3>{{ event.startDate | date: 'short' }}</h3>
-            <h3>{{ event.endDate | date: 'short' }}</h3>
-            <h3>{{ event.address1 }}</h3>
-            <h3>{{ event.address2 }}</h3>
-            <h3>{{ event.city }}</h3>
-            <h3>{{ event.state }}</h3>
-            <h3>{{ event.zip }}</h3>
-             <h4 class="price">{{ event.cost | currency }}</h4>
-            <ul>
-                <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
-                <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
-                <li>Event website if applicable: {{ event.eventUrl }}</li>
-                <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
-                <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
-                <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
-                <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
-                <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
-                <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
-                <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
-                <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
-                <!-- <li>This line reflects event.status...I don't think we need status on this page: {{ event.status }}</li> -->
-            </ul>
-
-            <p>{{ event.description }}</p>
-          
-             <button type="button">Interested</button>
-            <button type="button">Definitely Going!</button>
-        </div>
-    </div>
-</div>
+</div> -->
