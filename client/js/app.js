@@ -1,4 +1,4 @@
-angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events.factories', 'events.services','angular-flexslider'])
+angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events.factories', 'events.services',,'events.directives','angular-flexslider'])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider

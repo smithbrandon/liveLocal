@@ -70,7 +70,7 @@ angular.module('events.controllers', [])
 
 
     }])
-    .controller('ComposeEventController', ['$scope', '$location', 'Event','$http', function ($scope, $location, Event,$http) {
+    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http', function ($scope, Geo, $location, Event,$http) {
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
 
@@ -80,7 +80,7 @@ angular.module('events.controllers', [])
             var p = new Event($scope.event);
             $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
             $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-            var coords = getLatLng($scope.event.address1, $scope.event.city, $scope.event.state)
+            var coords = Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
                 .then(function(success){
                     console.log(success);
                     $scope.event.lat = success.lat;
@@ -88,7 +88,7 @@ angular.module('events.controllers', [])
                     console.log($scope.event.startDate);
                     console.log($scope.event.endDate);
                     p.$save(function () {
-                        $location.path('/');
+                        // $location.path('/');
                     }, function (err) {
                         console.log(err);
                     });
@@ -97,21 +97,21 @@ angular.module('events.controllers', [])
                 });
         }
 
-        function getLatLng(address, city, state){
-            var addressSan = address.replace(' ','+');
-            var citySan = city.replace(' ','+');
-            var coord = {};
-            return $http({
-                method: 'GET',
-                url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
-            }).then(function(success){
-                coord.lat = success.data.results[0].geometry.location.lat;
-                coord.lng = success.data.results[0].geometry.location.lng;
-                return coord;
-            },function(err){
-                console.log(err);
-            });
-        }
+        // function getLatLng(address, city, state){
+        //     var addressSan = address.replace(' ','+');
+        //     var citySan = city.replace(' ','+');
+        //     var coord = {};
+        //     return $http({
+        //         method: 'GET',
+        //         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
+        //     }).then(function(success){
+        //         coord.lat = success.data.results[0].geometry.location.lat;
+        //         coord.lng = success.data.results[0].geometry.location.lng;
+        //         return coord;
+        //     },function(err){
+        //         console.log(err);
+        //     });
+        // }
 
     }])
     .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event', function ($scope, $location, $routeParams, Event) {
