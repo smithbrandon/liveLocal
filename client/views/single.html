@@ -3,49 +3,60 @@ and a google map. -->
 
 <div class="container">
     <div style="margin: 10px;">
-    <!-- This row holds the event image and the event description  -->
-    <div class="row">
-        <div class="col-xs-12 col-sm-6">
-            <img class="img-responsive" src="{{ event.images }}">
+        <!-- This row holds the event image and the event description  -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img class="img-responsive" src="{{ event.images }}">
+            </div>
+
+            <div class="col-xs-12 col-sm-6">
+                <p>{{ event.description }}</p>
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Interested</button>
+                    <button type="button" class="btn btn-default">Definitely Going!</button>
+                </div>
+            </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6">
-            <p>{{ event.description }}</p>
-            <button type="button">Interested</button>
-            <button type="button">Definitely Going!</button>
-        </div>
-        </div>
-    </div>
+        <!-- This row holds the bullets and the map  -->
+        <div class="row">
+            <div style="margin: 10px;">
+                <div class="col-xs-12 col-sm-6">
+                    <h2>{{ event.title }}</h2>
+                    <h3>Starting date and time: {{ event.startDate | date: 'short' }}
+                        <h3>Ending date and time: {{ event.endDate | date: 'short' }}</h3>
+                        <h3>Event address:
+                            <h3>{{ event.address1 }}</h3>
+                             <h3>{{ event.address2 }}</h3> 
+                            <h3>{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
+                            <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
+                            <dl>
+<dl>
+  <dt>Coffee</dt>
+  <dd>Black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>White cold drink</dd>
+</dl>
 
-    <!-- This row holds the bullets and the map  -->
-    <div class="row">
-            <div style="margin: 10px;">     
-        <div class="col-xs-12 col-sm-6">
-            <h2>{{ event.title }}</h2>
-            <h3>Starting date and time: {{ event.startDate | date: 'short' }}
-                <h3>Ending date and time: {{ event.endDate | date: 'short' }}</h3>
-                <h3>Event address:
-                    <h3>{{ event.address1 }}</h3>
-                    <h3>{{ event.address2 }}</h3>
-                    <h3>{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
-                    <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
-                    <ul>
-                        <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
-                        <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
-                        <li>Event website if applicable: {{ event.eventUrl }}</li>
-                        <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
-                        <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
-                        <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
-                        <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
-                        <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
-                        <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
-                        <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
-                        <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
-                    </ul>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <google-maps id="singleMap" events="eventArray"></google-maps>
+                                <dt>Are tickets required?</dt>
+                                <dd>{{ event.tickets | yesNo }}</dd>
+                                <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
+                                <li>Event website if applicable: {{ event.eventUrl }}</li>
+                                <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
+                                <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
+                                <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
+                                <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
+                                <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
+                                <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
+                                <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
+                                <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
+                            </ul>
+                </div>
+                        </div>
+            <div style="margin: 50px">
+                <div class="col-xs-12 col-sm-6">
+                    <google-maps id="singleMap" events="eventArray"></google-maps>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
