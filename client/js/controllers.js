@@ -23,11 +23,8 @@ angular.module('events.controllers', [])
             $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
             Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
                 .then(function(success){
-                    console.log(success);
                     $scope.event.lat = success.lat;
                     $scope.event.lng = success.lng;
-                    console.log($scope.event.startDate);
-                    console.log($scope.event.endDate);
                     p.$save(function () {
                         $location.path('/');
                     }, function (err) {
@@ -53,13 +50,10 @@ angular.module('events.controllers', [])
         $scope.save = function() {
             var p = Promise.resolve();
             if($scope.addressChange === true){
-                console.log('Change Ran');
                 p = Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
                 .then(function(success){
                     $scope.event.lat = success.lat;
                     $scope.event.lng = success.lng;
-                    console.log($scope.event.lat);
-                    console.log($scope.event.lng);
                 })
             }
             p.then(function(){
