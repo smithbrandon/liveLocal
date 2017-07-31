@@ -26,13 +26,13 @@
             <div class="row panel panel-default panel-body form-group">
                 <form class="form-inline">
                     <div class="form-heading"><span class="cartEmblem">2</span>  Event Address</div><span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span></h1><br><br>
-                    <input ng-model="event.address1" class="col-sm-6 form-rounded" type="text" name="address1" placeholder="Address 1">
-                    <input ng-model="event.address2" class="col-sm-6 form-rounded" type="text" name="address2" placeholder="Address 2"><br><br>
+                    <input ng-change="addressChange=true" ng-model="event.address1" class="col-sm-6 form-rounded" type="text" name="address1" placeholder="Address 1">
+                    <input ng-change="addressChange=true" ng-model="event.address2" class="col-sm-6 form-rounded" type="text" name="address2" placeholder="Address 2"><br><br>
                  </form>   
                 <form class="form-inline">
-                    <input ng-model="event.city" class="col-sm-4 form-rounded" type="text" name="city" placeholder="City">
-                    <input ng-model="event.state" class="col-sm-4 form-rounded" type="text" name="state" placeholder="State">
-                    <input ng-model="event.zip" class="col-sm-4 form-rounded" type="text" name="zip" placeholder="Zip">
+                    <input ng-change="addressChange=true" ng-model="event.city" class="col-sm-4 form-rounded" type="text" name="city" placeholder="City">
+                    <input ng-change="addressChange=true" ng-model="event.state" class="col-sm-4 form-rounded" type="text" name="state" placeholder="State">
+                    <input ng-change="addressChange=true" ng-model="event.zip" class="col-sm-4 form-rounded" type="text" name="zip" placeholder="Zip">
             </div>
 
     <!-- Form group for image, ticket, ticketsUrl, eventUrl -->

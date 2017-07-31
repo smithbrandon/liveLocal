@@ -1,5 +1,8 @@
-#map{
+#mainMap, #map{
     height: 200px;
+}
+#singleMap{
+    height: 400px;
 }
 .content-wrapper{
     width: 100%;
