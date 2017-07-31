@@ -20,11 +20,11 @@ angular.module('events.directives',[])
                     }
 
                     map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 15,
+                        zoom: 12,
                         center: new google.maps.LatLng(center[0], center[1]),
                         mapTypeId: 'terrain',
                         disableDefaultUI: true,
-                        draggable: false,
+                        draggable: true,
                         fullscreenControl: false,
                         zoomControl: true,
                         zoomControlOptions: true,

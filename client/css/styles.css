@@ -1,7 +1,7 @@
-#mainMap, #map{
+#mainMap>#map{
     height: 200px;
 }
-#singleMap{
+#singleMap>#map{
     height: 400px;
 }
 .content-wrapper{
