@@ -5,12 +5,13 @@ and a google map. -->
     <img id="heroImg" src="/img/lookouts_hor.jpg">
 </div>
 
+<!-- This box holds the event image and the event description  -->
 <div class="container">
 
     <div class="row">
 
         <!-- <div class="col-xs-12 col-sm-8 col-md-6"> -->
-            <div class="event-image col-xs-12 col-sm-8 col-md-6">
+            <div class="col-xs-12 col-sm-8 col-md-6">
                 <!-- <img src="{{ event.images }}"> -->
             </div>
 
@@ -21,18 +22,18 @@ and a google map. -->
         </div>
     </div>
 </div>
-<!-- This box holds the bullets  -->
+
+<!-- This box holds the bullets and the map  -->
 <div class="container">
     <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6">
         <h2>{{ event.title }}</h2>
-        <h3>{{ event.startDate | date: 'short' }}</h3>
-        <h3>{{ event.endDate | date: 'short' }}</h3>
+        <h3>Starting date and time: {{ event.startDate | date: 'short' }} 
+        <h3>Ending date and time: {{ event.endDate | date: 'short' }}</h3>
+        <h3>Event address: 
         <h3>{{ event.address1 }}</h3>
         <h3>{{ event.address2 }}</h3>
-        <h3>{{ event.city }}</h3>
-        <h3>{{ event.state }}</h3>
-        <h3>{{ event.zip }}</h3>
+        <h3>{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
         <h4 class="price">{{ event.cost | currency }}</h4>
         <ul>
             <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
