@@ -47,25 +47,27 @@ angular.module('events.controllers', [])
             });
         }
 
-        function getLatLng(address, city, state, zip){
-            var addressSan = address.replace(' ','+');
-            var citySan = city.replace(' ','+');
-            var coord = {};
-            return $http({
-                method: 'GET',
-                url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
-            }).then(function(success){
-                coord.lat = success.data.results[0].geometry.location.lat;
-                coord.lng = success.data.results[0].geometry.location.lng;
-                return coord;
-            },function(err){
-                console.log(err);
-            });
-        }
+        // function getLatLng(address, city, state, zip){
+        //     var addressSan = address.replace(' ','+');
+        //     var citySan = city.replace(' ','+');
+        //     var coord = {};
+        //     return $http({
+        //         method: 'GET',
+        //         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
+        //     }).then(function(success){
+        //         coord.lat = success.data.results[0].geometry.location.lat;
+        //         coord.lng = success.data.results[0].geometry.location.lng;
+        //         return coord;
+        //     },function(err){
+        //         console.log(err);
+        //     });
+        // }
 
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event', function ($scope, $routeParams, Event) {
         $scope.event = Event.get({ id: $routeParams.id });
+
+
 
     }])
     .controller('ComposeEventController', ['$scope', '$location', 'Event','$http', function ($scope, $location, Event,$http) {
@@ -131,27 +133,5 @@ angular.module('events.controllers', [])
                 $location.replace().path('/' + $routeParams.id);
             })
         }
-
-    }])
-    .controller('mapController', ['$scope', function ($scope) {
-
-        $scope.initialize = function () {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: new google.maps.LatLng(35.032616, -85.314063),
-                mapTypeId: 'terrain'
-            });
-            var results = [[35.032616, -85.314063],[35.037261,-85.306198]];
-
-            for (var i = 0; i < results.length; i++) {
-                var coords = results[i];
-                var latLng = new google.maps.LatLng(coords[0], coords[1]);
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map
-                });
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', $scope.initialize);
 
     }]);
