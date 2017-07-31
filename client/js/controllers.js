@@ -66,4 +66,47 @@ angular.module('events.controllers', [])
 
         }
 
+    }])
+    .controller('adminController',['$scope','$http',function($scope, $http){
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+
+        var userId = 1;
+        $http({
+            method: 'GET',
+            url: '/api/events/' + userId
+        }).then(function(success){
+            $scope.events = success.data;
+            // for(var i = 0;i<success.data.length;i++){
+                // $scope.events[0].interested = getInterested(success.data[0]);
+                // $scope.events[0].going = getGoing(success.data[0]);
+            // }
+            console.log($scope.events);
+        },function(err){
+            console.log(err);
+        })
+
+        // function getInterested(id){
+        //     return $http({
+        //         method: 'GET',
+        //         url: '/api/events/'+id+'/interested'
+        //     }).then(function(success){
+        //         console.log(success.data);
+        //     },function(err){
+        //         console.log(err);
+        //     })
+        // }
+
+        // function getGoing(id){
+        //     return $http({
+        //         method: 'GET',
+        //         url: '/api/events' + id + '/going'
+        //     }).then(function(success){
+        //         console.log(success.data);
+        //     },function(err){
+        //         console.log(err);
+        //     })
+        // }
     }]);
