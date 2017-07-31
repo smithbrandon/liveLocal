@@ -40,16 +40,31 @@ and a google map. -->
 
                                 <dt>Are tickets required?</dt>
                                 <dd>{{ event.tickets | yesNo }}</dd>
-                                <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
-                                <li>Event website if applicable: {{ event.eventUrl }}</li>
-                                <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
-                                <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
-                                <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
-                                <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
-                                <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
-                                <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
-                                <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
-                                <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
+
+                                <dt>Where to get tickets if applicable</dt>
+                                <dd>{{ event.ticketsUrl }}</dd>
+
+                                <dt>Event website if applicable</dt>
+                                <dd>{{ event.eventUrl }}</dd>
+
+                                <dt>Can I bring my pet?</dt>
+                                <dd>{{ event.petFriendly | yesNo }}<dd>
+
+                                <dt>Is the event family-oriented?</dt>
+                                <dd>{{ event.familyFriendly | yesNo }}</dd>
+                                
+                                <dt>Will smoking be permitted?</dt>
+                                <dt>{{ event.smokeFree | yesNo }}</dt>
+                                <dd>Is alcohol being served?</dd>
+                                <dt>{{ event.alcoholFree | yesNo }}</dt>
+                                <dd>Is the event being held outdoors?</dd>
+                                <dt>{{ event.outdoors | yesNo }}</dt>
+                                <dd>Is the event being held in the daytime?</dd>
+                                <dt>{{ event.daytime | yesNo }}</dt>
+                                <dd>Do I have to be 18 or older?</dd>
+                                <dt>{{ event.isEighteen | yesNo }}</dt>
+                                <dd>Do I have to be 21 or older?</dd>
+                                <dt>{{ event.isTwentyOne | yesNo }}</dt>
                             </ul>
                 </div>
                         </div>
