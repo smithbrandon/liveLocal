@@ -9,11 +9,10 @@ and a google map. -->
 
     <div class="row">
 
-        <div class="col-xs-12 col-sm-8 col-md-6">
-            <div class="event-image">
-                <img src="{{ event.image.url }}">
+        <!-- <div class="col-xs-12 col-sm-8 col-md-6"> -->
+            <div class="event-image col-xs-12 col-sm-8 col-md-6">
+                <!-- <img src="{{ event.images }}"> -->
             </div>
-        </div>
 
         <div class="col-xs-12 col-sm-8 col-md-6">
             <p>{{ event.description }}</p>
@@ -22,9 +21,9 @@ and a google map. -->
         </div>
     </div>
 </div>
-
 <!-- This box holds the bullets  -->
-<div class="row">
+<div class="container">
+    <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6">
         <h2>{{ event.title }}</h2>
         <h3>{{ event.startDate | date: 'short' }}</h3>
@@ -50,16 +49,11 @@ and a google map. -->
         </ul>
     </div>
 </div>
-</div>
-
-<div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6">
         <div id="map">
         </div>
-
     </div>
-</div>
-</div>
+    </div>
 
 
 <!-- <div class="container event-list">
