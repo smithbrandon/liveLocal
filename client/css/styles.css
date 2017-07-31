@@ -42,7 +42,12 @@
  }   
 .form-rounded {
     border-radius: 5px;
-}   
+}
+.form-heading{
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 15px;
+} 
  /*List-page!!!!*/
 
  .event-thumbnail {
