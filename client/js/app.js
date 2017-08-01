@@ -18,9 +18,9 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/single.html',
         controller: 'SingleEventController'
     })
-    .when('/map',{
-        templateUrl: 'views/map.html',
-        controller: 'mapController'
+    .when('/admin',{
+        templateUrl: 'views/admin.html',
+        controller: 'adminController'
     })
     .otherwise({
         redirectTo: '/'

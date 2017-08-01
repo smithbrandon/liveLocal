@@ -1,0 +1,33 @@
+<div class="container"> 
+    <ul class="nav nav-tabs right-left">
+        <li role="presentation"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal</a></li>
+        <li role="presentation" class="active"><a href="#coord" aria-controls="coord" role="tab" data-toggle="tab">Event Coordinator</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="personal">
+            This is personal
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="coord">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Event Name <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                            <td>Event Date <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                            <td>Interested/Going <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                            <td>Edit Event</td>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr ng-repeat="e in events">
+                            <td>{{e.title}}</td>
+                            <td>{{e.startDate | date: 'MM/dd/yy hh:mm a'}}</td>
+                            <td>{{e.interested || 0}}/{{e.going || 0}}</td>
+                            <td><a href="/events/{{e.id}}/update" class="btn btn-primary">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
