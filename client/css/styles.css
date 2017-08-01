@@ -79,3 +79,7 @@
 .right-left li{
     float: right;
 }
+.compressed {
+    margin: 0;
+    padding: 0;
+}
