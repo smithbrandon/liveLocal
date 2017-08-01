@@ -59,7 +59,23 @@
                     <input ng-model="event.eventUrl" class="col-sm-12 form-rounded" type="text" name="eventurl"><br>
             </div>
 
-    <!-- Form group for all of the radios -->
+            <!-- Form group for Tags -->
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">3</span> Tags</h1></div>
+                <div class="panel-body">
+                    <label>Tags: </label>
+                    <span ng-repeat="b in badges" class="badge badge-info">{{b.tag}}</span>
+                    <div class="input-group">
+                        <input ng-change="checkTagLength()" ng-model="allTags" type="text" class="form-control" placeholder="Tag Description" aria-describedby="basic-add">
+                        <span ng-click="addTag()"class="input-group-addon psuedo-success" id="basic-add">Add</span>
+                    </div>
+                    <div id='tagList' class="list-group">
+                        <button ng-click="selectTag(t)" type="button" class="list-group-item" ng-repeat="t in tags | orderBy: 'tag' | filter: {tag: allTags}">{{t.tag}}</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form group for all of the radios -->
             <div class="row panel panel-default panel-body form-group">
                 <span class="cartEmblem">4</span><h1 class="panel-title">Pet Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span></h1>
                     <br>

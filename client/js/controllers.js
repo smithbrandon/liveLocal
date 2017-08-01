@@ -11,11 +11,29 @@ angular.module('events.controllers', [])
 
 
     }])
-    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http', function ($scope, Geo, $location, Event,$http) {
+    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http','Tag', function ($scope, Geo, $location, Event,$http,Tag) {
+        $scope.allTags = null;
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
 
         $('[data-toggle="popover"]').popover();
+        $scope.tags = Tag.query();
+        
+        $scope.checkTagLength = function(){
+            if($scope.allTags.length < 1){
+                $scope.allTags = null;
+            }
+        }
+
+        $scope.badges = [];
+
+        $scope.selectTag = function(tag){
+            $scope.allTags = tag.tag;
+        }
+        $scope.addTag = function(t){
+            $scope.badges.push($scope.allTags);
+            console.log($scope.badges);
+        }
 
         $scope.save = function () {
             var p = new Event($scope.event);
@@ -34,13 +52,14 @@ angular.module('events.controllers', [])
 
                 });
         }
+        
 
     }])
     .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', function ($scope, $location, $routeParams, Event, Geo) {
         $scope.addressChange = false;
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
-
+        
         Event.get({id: $routeParams.id}, function(success) {
             $scope.event = success;
             $scope.event.startDate = moment(moment.utc(success.startDate).toDate()).format('MM/DD/YYYY hh:mm A');
