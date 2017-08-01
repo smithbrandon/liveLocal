@@ -86,6 +86,42 @@ angular.module('events.controllers', [])
         }
 
     }])
+
+    .controller('LoginController', ['$scope', 'UserService', '$location', function($scope, UserService, $location) {
+    UserService.me().then(function() {
+        redirect();
+    });
+    
+    
+    $scope.login = function() {
+        UserService.login($scope.email, $scope.password)
+        .then(function() {
+            redirect();
+        }, function(err) {
+            console.log(err);
+        });
+    }
+
+    function redirect() {
+        var dest = $location.search().dest;
+        if (!dest) { dest = '/'; }
+        $location.replace().path(dest).search('dest', null);
+    }
+
+}])
+// .controller('UserListController', ['$scope', 'User', 'UserService' function($scope, User, UserService) {
+//  UserService.requireLogin();   
+// $scope.users = User.query();
+
+//     $scope.createUser = function() {
+//         var u = new User($scope.newUser);
+//         u.$save(function() {
+//             $scope.newUser = {};
+//             $scope.users = User.query();
+//         });
+//     }
+// }])
+
     .controller('navbar', ['$scope', function($scope) {
         $('.nav li').on('click', function(){
             $('.nav li').removeClass("active");
@@ -97,6 +133,7 @@ angular.module('events.controllers', [])
             e.preventDefault()
             $(this).tab('show')
         });
+
 
         var userId = 1;
         Event.getEventsByUser({userId: userId},function(success){

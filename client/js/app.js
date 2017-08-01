@@ -10,6 +10,10 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
         templateUrl: 'views/compose.html',
         controller: 'ComposeEventController'
     })
+    .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
+    })
     .when('/events/:id/update', {
         templateUrl: 'views/update.html',
         controller: 'UpdateEventController'
