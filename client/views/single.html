@@ -1,69 +1,69 @@
 <!-- Add a view for displaying a single event. Should display all event details
 and a google map. -->
 
-<div class="container-fluid">
-    <img id="heroImg" src="/img/lookouts_hor.jpg">
-</div>
-
 <div class="container">
-
-    <div class="row">
-
-        <!-- <div class="col-xs-12 col-sm-8 col-md-6"> -->
-            <div class="event-image col-xs-12 col-sm-8 col-md-6">
-                <!-- <img src="{{ event.images }}"> -->
+    <div style="margin: 10px;">
+        <!-- This row holds the event image and the event description  -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img class="img-responsive img-rounded" src="{{ event.images }}">
             </div>
 
-        <div class="col-xs-12 col-sm-8 col-md-6">
-            <p>{{ event.description }}</p>
-            <button type="button">Interested</button>
-            <button type="button">Definitely Going!</button>
+            <div class="col-xs-12 col-sm-6">
+                <p>{{ event.description }}</p>
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Interested</button>
+                    <button type="button" class="btn btn-default">Definitely Going!</button>
+                    <form method="POST" action="">
+<input type="submit" value="Submit" name="submitBtn" onclick="this.disabled=true;this.form.submit();" >
+</form>
+                </div>
+            </div>
+        </div>
+
+        <!-- This row holds the bullets and the map  -->
+        <div class="row">
+            <div style="margin: 10px;">
+                <div class="col-xs-12 col-sm-6">
+                    <h2>{{ event.title }}</h2>
+                    <h3>Start: {{ event.startDate | date: 'short' }}</h3>
+                        <h3>End: {{ event.endDate | date: 'short' }}</h3>
+                        <h3>Event address:</h3>
+                            <h3 class="compressed">{{ event.address1 }}</h3>
+                            <h3 class="compressed">{{ event.address2 }}</h3>
+                            <h3 class="compressed">{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
+                            <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
+                            <dl>
+                                <dt>Are tickets required?</dt>
+                                <dd>{{ event.tickets | yesNo }}</dd>
+                                <dt>Where to get tickets if applicable</dt>
+                                <dd>{{ event.ticketsUrl }}</dd>
+                                <dt>Event website if applicable</dt>
+                                <dd>{{ event.eventUrl }}</dd>
+                                <dt>Can I bring my pet?</dt>
+                                <dd>{{ event.petFriendly | yesNo }}
+                                    <dd>
+                                        <dt>Is the event family-oriented?</dt>
+                                        <dd>{{ event.familyFriendly | yesNo }}</dd>
+                                        <dt>Will smoking be permitted?</dt>
+                                        <dd>{{ event.smokeFree | yesNo }}</dd>
+                                        <dt>Is alcohol being served?</dt>
+                                        <dd>{{ event.alcoholFree | yesNo }}</dd>
+                                        <dt>Is the event being held outdoors?</dt>
+                                        <dd>{{ event.outdoors | yesNo }}</dd>
+                                        <dt>Is the event being held in the daytime?</dt>
+                                        <dd>{{ event.daytime | yesNo }}</dd>
+                                        <dt>Do I have to be 18 or older?</dt>
+                                        <dd>{{ event.isEighteen | yesNo }}</dd>
+                                        <dt>Do I have to be 21 or older?</dt>
+                                        <dd>{{ event.isTwentyOne | yesNo }}</dd>
+                            </dl>
+                </div>
+            </div>
+            <div style="margin: 50px">
+                <div class="col-xs-12 col-sm-6">
+                    <google-maps id="singleMap" events="eventArray"></google-maps>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- This box holds the bullets  -->
-<div class="container">
-    <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6">
-        <h2>{{ event.title }}</h2>
-        <h3>{{ event.startDate | date: 'short' }}</h3>
-        <h3>{{ event.endDate | date: 'short' }}</h3>
-        <h3>{{ event.address1 }}</h3>
-        <h3>{{ event.address2 }}</h3>
-        <h3>{{ event.city }}</h3>
-        <h3>{{ event.state }}</h3>
-        <h3>{{ event.zip }}</h3>
-        <h4 class="price">{{ event.cost | currency }}</h4>
-        <ul>
-            <li>Are tickets required?: {{ event.tickets | yesNo }}</li>
-            <li>Where to get tickets if applicable: {{ event.ticketsUrl }}</li>
-            <li>Event website if applicable: {{ event.eventUrl }}</li>
-            <li>Can I bring my pet?: {{ event.petFriendly | yesNo }}</li>
-            <li>Is the event family-oriented?: {{ event.familyFriendly | yesNo }}</li>
-            <li>Will smoking be permitted?: {{ event.smokeFree | yesNo }}</li>
-            <li>Is alcohol being served?: {{ event.alcoholFree | yesNo }}</li>
-            <li>Is the event being held outdoors?: {{ event.outdoors | yesNo }}</li>
-            <li>Is the event being held in the daytime?: {{ event.daytime | yesNo }}</li>
-            <li>Do I have to be 18 or older?: {{ event.isEighteen | yesNo }}</li>
-            <li>Do I have to be 21 or older?: {{ event.isTwentyOne | yesNo }}</li>
-        </ul>
-    </div>
-</div>
-    <div class="col-xs-12 col-sm-8 col-md-6">
-        <div id="map">
-        </div>
-    </div>
-    </div>
-
-
-<!-- <div class="container event-list">
-    <div class="event-image">
-        <img src="{{ event.imageUrl }}">
-        <div class="event-info">
-            <div class="page-header row">
-        <h1 class="col-sm-10 col-xs-12">Selected Event</h1>
-    </div>
-
-        </div>
-    </div>
-</div> -->

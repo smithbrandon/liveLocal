@@ -47,3 +47,11 @@ exports.addTag = function(eventId,tagId){
 exports.removeTag = function(eventId, tagId){
     return db.empty('UntagEvent',[eventId, tagId])
 }
+
+exports.eventsByUser = function(userId){
+    return db.rows('EventsByUser',[userId])
+}
+
+exports.interestsByUser = function(userId){
+    return db.rows('InterestsByUser',[userId])
+}

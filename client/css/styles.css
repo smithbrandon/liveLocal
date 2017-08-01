@@ -1,5 +1,8 @@
-#map{
+#mainMap>#map{
     height: 200px;
+}
+#singleMap>#map{
+    height: 400px;
 }
 .content-wrapper{
     width: 100%;
@@ -42,7 +45,12 @@
  }   
 .form-rounded {
     border-radius: 5px;
-}   
+}
+.form-heading{
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 15px;
+} 
  /*List-page!!!!*/
 
  .event-thumbnail {
@@ -64,8 +72,14 @@
      background-size: contain;
 
  }
-
 .flex-event-text{
     float: right;
     width: 60%;
+}
+
+.right-left li{
+    float: right;
+}
+.compressed {
+    margin: 0;
 }
