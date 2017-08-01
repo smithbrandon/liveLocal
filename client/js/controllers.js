@@ -72,6 +72,7 @@ angular.module('events.controllers', [])
             $('.nav li').removeClass("active");
             $(this).addClass('active');
         })
+    }])
     .controller('adminController',['$scope','$http',function($scope, $http){
         $('#myTabs a').click(function (e) {
             e.preventDefault()
