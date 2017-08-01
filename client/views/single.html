@@ -6,7 +6,7 @@ and a google map. -->
         <!-- This row holds the event image and the event description  -->
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <img class="img-responsive" src="{{ event.images }}">
+                <img class="img-responsive img-rounded" src="{{ event.images }}">
             </div>
 
             <div class="col-xs-12 col-sm-6">
@@ -23,51 +23,40 @@ and a google map. -->
             <div style="margin: 10px;">
                 <div class="col-xs-12 col-sm-6">
                     <h2>{{ event.title }}</h2>
-                    <h3>Starting date and time: {{ event.startDate | date: 'short' }}
-                        <h3>Ending date and time: {{ event.endDate | date: 'short' }}</h3>
-                        <h3>Event address:
+                    <h3>Start: {{ event.startDate | date: 'short' }}</h3>
+                        <h3>End: {{ event.endDate | date: 'short' }}</h3>
+                        <h3>Event address:</h3>
                             <h3>{{ event.address1 }}</h3>
-                             <h3>{{ event.address2 }}</h3> 
+                            <h3>{{ event.address2 }}</h3>
                             <h3>{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
                             <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
                             <dl>
-<dl>
-  <dt>Coffee</dt>
-  <dd>Black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>White cold drink</dd>
-</dl>
-
                                 <dt>Are tickets required?</dt>
                                 <dd>{{ event.tickets | yesNo }}</dd>
-
                                 <dt>Where to get tickets if applicable</dt>
                                 <dd>{{ event.ticketsUrl }}</dd>
-
                                 <dt>Event website if applicable</dt>
                                 <dd>{{ event.eventUrl }}</dd>
-
                                 <dt>Can I bring my pet?</dt>
-                                <dd>{{ event.petFriendly | yesNo }}<dd>
-
-                                <dt>Is the event family-oriented?</dt>
-                                <dd>{{ event.familyFriendly | yesNo }}</dd>
-                                
-                                <dt>Will smoking be permitted?</dt>
-                                <dt>{{ event.smokeFree | yesNo }}</dt>
-                                <dd>Is alcohol being served?</dd>
-                                <dt>{{ event.alcoholFree | yesNo }}</dt>
-                                <dd>Is the event being held outdoors?</dd>
-                                <dt>{{ event.outdoors | yesNo }}</dt>
-                                <dd>Is the event being held in the daytime?</dd>
-                                <dt>{{ event.daytime | yesNo }}</dt>
-                                <dd>Do I have to be 18 or older?</dd>
-                                <dt>{{ event.isEighteen | yesNo }}</dt>
-                                <dd>Do I have to be 21 or older?</dd>
-                                <dt>{{ event.isTwentyOne | yesNo }}</dt>
-                            </ul>
+                                <dd>{{ event.petFriendly | yesNo }}
+                                    <dd>
+                                        <dt>Is the event family-oriented?</dt>
+                                        <dd>{{ event.familyFriendly | yesNo }}</dd>
+                                        <dt>Will smoking be permitted?</dt>
+                                        <dd>{{ event.smokeFree | yesNo }}</dd>
+                                        <dt>Is alcohol being served?</dt>
+                                        <dd>{{ event.alcoholFree | yesNo }}</dd>
+                                        <dt>Is the event being held outdoors?</dt>
+                                        <dd>{{ event.outdoors | yesNo }}</dd>
+                                        <dt>Is the event being held in the daytime?</dt>
+                                        <dd>{{ event.daytime | yesNo }}</dd>
+                                        <dt>Do I have to be 18 or older?</dt>
+                                        <dd>{{ event.isEighteen | yesNo }}</dd>
+                                        <dt>Do I have to be 21 or older?</dt>
+                                        <dd>{{ event.isTwentyOne | yesNo }}</dd>
+                            </dl>
                 </div>
-                        </div>
+            </div>
             <div style="margin: 50px">
                 <div class="col-xs-12 col-sm-6">
                     <google-maps id="singleMap" events="eventArray"></google-maps>
