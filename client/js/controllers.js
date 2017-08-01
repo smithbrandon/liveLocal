@@ -73,46 +73,31 @@ angular.module('events.controllers', [])
             $(this).addClass('active');
         })
     }])
-    .controller('adminController',['$scope','$http',function($scope, $http){
+    .controller('adminController',['$scope','$http','Event',function($scope, $http, Event){
         $('#myTabs a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
         });
 
         var userId = 1;
+        Event.getEventsByUser({userId: userId},function(success){
+            $scope.events = success;
+            console.log(success);
+        },function(err){
+            console.log(err);
+        });
+
+        $scope.cancelEvent = function(event){
+            event.status = 0;
+            event.$update({id: event.id});
+        }
         $http({
             method: 'GET',
-            url: '/api/events/user/' + userId
+            url: '/api/events/interests/' + userId
         }).then(function(success){
-            $scope.events = success.data;
-            // for(var i = 0;i<success.data.length;i++){
-                // $scope.events[0].interested = getInterested(success.data[0]);
-                // $scope.events[0].going = getGoing(success.data[0]);
-            // }
-            console.log($scope.events);
+            $scope.interests = success.data;
+            console.log($scope.interests);
         },function(err){
             console.log(err);
         })
-
-        // function getInterested(id){
-        //     return $http({
-        //         method: 'GET',
-        //         url: '/api/events/'+id+'/interested'
-        //     }).then(function(success){
-        //         console.log(success.data);
-        //     },function(err){
-        //         console.log(err);
-        //     })
-        // }
-
-        // function getGoing(id){
-        //     return $http({
-        //         method: 'GET',
-        //         url: '/api/events' + id + '/going'
-        //     }).then(function(success){
-        //         console.log(success.data);
-        //     },function(err){
-        //         console.log(err);
-        //     })
-        // }
     }]);

@@ -36,6 +36,17 @@ router.get('/user/:UserId',function(req, res){
             res.sendStatus(500);
         })
 })
+
+router.get('/interests/:UserId',function(req, res){
+    procedures.interestsByUser(req.params.UserId)
+        .then(function(events){
+            res.send(events);
+        },function(err){
+            console.log(err);
+            res.sendStatus(500);
+        })
+})
+
 router.route('/:id')
     .get(function(req, res) {
         procedures.read(req.params.id)
