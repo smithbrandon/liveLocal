@@ -57,13 +57,15 @@
      background-size: contain;
  }
  .flex-event-image {
+     position: relative;
      height: 150px;
      width: 30%;
-     display: block;
+     display: inline-block;
      background-size: contain;
 
  }
 
 .flex-event-text{
     float: right;
+    width: 60%;
 }

@@ -133,7 +133,41 @@ angular.module('events.controllers', [])
         }
 
     }])
-    .controller('mapController', ['$scope', function ($scope) {
+    .controller('LoginController', ['$scope', 'UserService', '$location', function($scope, UserService, $location) {
+    UserService.me().then(function() {
+        redirect();
+    });
+    
+    
+    $scope.login = function() {
+        UserService.login($scope.email, $scope.password)
+        .then(function() {
+            redirect();
+        }, function(err) {
+            console.log(err);
+        });
+    }
+
+    function redirect() {
+        var dest = $location.search().dest;
+        if (!dest) { dest = '/'; }
+        $location.replace().path(dest).search('dest', null);
+    }
+
+}])
+// .controller('UserListController', ['$scope', 'User', 'UserService' function($scope, User, UserService) {
+//  UserService.requireLogin();   
+// $scope.users = User.query();
+
+//     $scope.createUser = function() {
+//         var u = new User($scope.newUser);
+//         u.$save(function() {
+//             $scope.newUser = {};
+//             $scope.users = User.query();
+//         });
+//     }
+// }])
+.controller('mapController', ['$scope', function ($scope) {
 
         $scope.initialize = function () {
             var map = new google.maps.Map(document.getElementById('map'), {

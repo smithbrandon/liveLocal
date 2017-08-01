@@ -1,5 +1,8 @@
 var db = require('../config/db');
 
+exports.readByEmail = function(email) {
+    return db.row('UserByEmail', [email]);
+}
 exports.all = function() {
     return db.rows('UsersGet');
 }
