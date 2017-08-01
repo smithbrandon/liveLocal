@@ -26,9 +26,9 @@ and a google map. -->
                     <h3>Start: {{ event.startDate | date: 'short' }}</h3>
                         <h3>End: {{ event.endDate | date: 'short' }}</h3>
                         <h3>Event address:</h3>
-                            <h3>{{ event.address1 }}</h3>
-                            <h3>{{ event.address2 }}</h3>
-                            <h3>{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
+                            <h3 class="compressed">{{ event.address1 }}</h3>
+                            <h3 class="compressed">{{ event.address2 }}</h3>
+                            <h3 class="compressed">{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
                             <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
                             <dl>
                                 <dt>Are tickets required?</dt>
