@@ -1,5 +1,8 @@
-#map{
+#mainMap>#map{
     height: 200px;
+}
+#singleMap>#map{
+    height: 400px;
 }
 .content-wrapper{
     width: 100%;
@@ -70,5 +73,9 @@
  }
 
 .flex-event-text{
+    float: right;
+}
+
+.right-left li{
     float: right;
 }

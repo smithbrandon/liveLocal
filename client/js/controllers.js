@@ -1,76 +1,17 @@
 angular.module('events.controllers', [])
-    .controller('EventListController', ['$scope', 'Event','$http', function ($scope, Event,$http) {
-        $scope.events = Event.query(function(success){
-            var p = Promise.resolve();
-            for (let i =0;i<success.length;i++){
-                p = p.then(function() {
-                    return getLatLng(success[i].address1,success[i].city,success[i].state)
-                    .then(function(latLng) {
-                        $scope.events[i].coord = latLng;
-                    });
-                });
-            }
-            p = p.then(function() {
-                $scope.initialize();
-            });
-        });
-
-        $scope.initialize = function () {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: new google.maps.LatLng(35.032616, -85.314063),
-                mapTypeId: 'terrain',
-                disableDefaultUI: true,
-                // draggable: false,
-                fullscreenControl: false,
-                zoomControl: false,
-                zoomControlOptions: false
-                // scrollwheel: false
-
-            });
-
-            for (var i = 0; i < $scope.events.length; i++) {
-                console.log($scope.events[i]);
-                var lat = $scope.events[i].coord.lat;
-                var lng = $scope.events[i].coord.lng;
-                addMarker(lat, lng, map);
-            }
-        }
-
-        function addMarker(lat, lng, map) {
-            console.log('adding pin');
-            console.log(lat, lng);
-            var latLng = new google.maps.LatLng(lat, lng);
-            var marker = new google.maps.Marker({
-                position: latLng,
-                map: map
-            });
-        }
-
-        // function getLatLng(address, city, state, zip){
-        //     var addressSan = address.replace(' ','+');
-        //     var citySan = city.replace(' ','+');
-        //     var coord = {};
-        //     return $http({
-        //         method: 'GET',
-        //         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
-        //     }).then(function(success){
-        //         coord.lat = success.data.results[0].geometry.location.lat;
-        //         coord.lng = success.data.results[0].geometry.location.lng;
-        //         return coord;
-        //     },function(err){
-        //         console.log(err);
-        //     });
-        // }
+    .controller('EventListController', ['$scope', 'Event','$http','Geo', function ($scope, Event,$http,Geo) {
+        $scope.events = Event.query();
 
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event', function ($scope, $routeParams, Event) {
-        $scope.event = Event.get({ id: $routeParams.id });
+        $scope.event = Event.get({ id: $routeParams.id },function(){
+            $scope.eventArray = [$scope.event];
+        });
 
 
 
     }])
-    .controller('ComposeEventController', ['$scope', '$location', 'Event','$http', function ($scope, $location, Event,$http) {
+    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http', function ($scope, Geo, $location, Event,$http) {
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
 
@@ -80,13 +21,10 @@ angular.module('events.controllers', [])
             var p = new Event($scope.event);
             $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
             $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-            var coords = getLatLng($scope.event.address1, $scope.event.city, $scope.event.state)
+            Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
                 .then(function(success){
-                    console.log(success);
                     $scope.event.lat = success.lat;
                     $scope.event.lng = success.lng;
-                    console.log($scope.event.startDate);
-                    console.log($scope.event.endDate);
                     p.$save(function () {
                         $location.path('/');
                     }, function (err) {
@@ -97,25 +35,9 @@ angular.module('events.controllers', [])
                 });
         }
 
-        function getLatLng(address, city, state){
-            var addressSan = address.replace(' ','+');
-            var citySan = city.replace(' ','+');
-            var coord = {};
-            return $http({
-                method: 'GET',
-                url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
-            }).then(function(success){
-                coord.lat = success.data.results[0].geometry.location.lat;
-                coord.lng = success.data.results[0].geometry.location.lng;
-                return coord;
-            },function(err){
-                console.log(err);
-            });
-        }
-
     }])
-    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event', function ($scope, $location, $routeParams, Event) {
-
+    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', function ($scope, $location, $routeParams, Event, Geo) {
+        $scope.addressChange = false;
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
 
@@ -126,18 +48,73 @@ angular.module('events.controllers', [])
         })
 
         $scope.save = function() {
-            $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-            $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-
-            $scope.event.$update(function() {
-                $location.replace().path('/' + $routeParams.id);
+            var p = Promise.resolve();
+            if($scope.addressChange === true){
+                p = Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
+                .then(function(success){
+                    $scope.event.lat = success.lat;
+                    $scope.event.lng = success.lng;
+                })
+            }
+            p.then(function(){
+                $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+                $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+                $scope.event.$update(function() {
+                    $location.replace().path('/' + $routeParams.id);
+                })
             })
+
         }
 
     }])
+<<<<<<< HEAD
     .controller('navbar', ['$scope', function($scope) {
         $('.nav li').on('click', function(){
             $('.nav li').removeClass("active");
             $(this).addClass('active');
         });
+=======
+    .controller('adminController',['$scope','$http',function($scope, $http){
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+
+        var userId = 1;
+        $http({
+            method: 'GET',
+            url: '/api/events/' + userId
+        }).then(function(success){
+            $scope.events = success.data;
+            // for(var i = 0;i<success.data.length;i++){
+                // $scope.events[0].interested = getInterested(success.data[0]);
+                // $scope.events[0].going = getGoing(success.data[0]);
+            // }
+            console.log($scope.events);
+        },function(err){
+            console.log(err);
+        })
+
+        // function getInterested(id){
+        //     return $http({
+        //         method: 'GET',
+        //         url: '/api/events/'+id+'/interested'
+        //     }).then(function(success){
+        //         console.log(success.data);
+        //     },function(err){
+        //         console.log(err);
+        //     })
+        // }
+
+        // function getGoing(id){
+        //     return $http({
+        //         method: 'GET',
+        //         url: '/api/events' + id + '/going'
+        //     }).then(function(success){
+        //         console.log(success.data);
+        //     },function(err){
+        //         console.log(err);
+        //     })
+        // }
+>>>>>>> 0a8f8fdb248fcefc595156c8bf5718e683de3cdf
     }]);

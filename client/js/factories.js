@@ -42,4 +42,25 @@ angular.module('events.factories', [])
             method: 'PUT'
         }
     });
+}])
+.factory('Geo', ['$http',function($http){
+    var GeoObj = {};
+
+    GeoObj.retrieve = function(address, city, state){
+        var addressSan = address.replace(' ','+');
+        var citySan = city.replace(' ','+');
+        var coord = {};
+        return $http({
+            method: 'GET',
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addressSan +',+' + citySan + ',+' + state + '&key=AIzaSyBPb-IgcKTbo1DIl8oe9i0-6aptQ2BZCUI'
+        }).then(function(success){
+            console.log(success);
+            coord.lat = success.data.results[0].geometry.location.lat;
+            coord.lng = success.data.results[0].geometry.location.lng;
+            return coord;
+        },function(err){
+            console.log(err);
+        });
+    }
+    return GeoObj;
 }]);
