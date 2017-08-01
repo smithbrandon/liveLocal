@@ -67,13 +67,11 @@ angular.module('events.controllers', [])
         }
 
     }])
-<<<<<<< HEAD
     .controller('navbar', ['$scope', function($scope) {
         $('.nav li').on('click', function(){
             $('.nav li').removeClass("active");
             $(this).addClass('active');
-        });
-=======
+        })
     .controller('adminController',['$scope','$http',function($scope, $http){
         $('#myTabs a').click(function (e) {
             e.preventDefault()
@@ -116,5 +114,4 @@ angular.module('events.controllers', [])
         //         console.log(err);
         //     })
         // }
->>>>>>> 0a8f8fdb248fcefc595156c8bf5718e683de3cdf
     }]);
