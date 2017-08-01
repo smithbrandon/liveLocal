@@ -51,3 +51,7 @@ exports.removeTag = function(eventId, tagId){
 exports.eventsByUser = function(userId){
     return db.rows('EventsByUser',[userId])
 }
+
+exports.interestsByUser = function(userId){
+    return db.rows('InterestsByUser',[userId])
+}

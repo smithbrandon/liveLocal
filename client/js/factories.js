@@ -19,6 +19,11 @@ angular.module('events.factories', [])
         untagEvent: {
             method: 'DELETE',
             url: '/api/events/:eventId/tag/:id'
+        },
+        getEventsByUser:{
+            method: 'GET',
+            url: '/api/events/user/:userId',
+            isArray: true
         }
     });
 }])

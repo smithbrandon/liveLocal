@@ -5,7 +5,48 @@
     </ul>
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane" id="personal">
-            This is personal
+            <div class="panel panel-default">
+                <div class="panel-heading">Events I'm Attending</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Event Name <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                                    <td>Event Date <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <tr ng-repeat="e in interests | filter:{interest:2}">
+                                    <td>{{e.title}}</td>
+                                    <td>{{e.startDate | date: 'MM/dd/yy hh:mm a'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Events I'm Interested In</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Event Name <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                                    <td>Event Date <span class="fa fa-sort-desc" aria-hidden="true"></span></td>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <tr ng-repeat="e in interests | filter:{interest:1}">
+                                    <td>{{e.title}}</td>
+                                    <td>{{e.startDate | date: 'MM/dd/yy hh:mm a'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div role="tabpanel" class="tab-pane active" id="coord">
             <div class="table-responsive">
@@ -23,7 +64,10 @@
                             <td>{{e.title}}</td>
                             <td>{{e.startDate | date: 'MM/dd/yy hh:mm a'}}</td>
                             <td>{{e.interested || 0}}/{{e.going || 0}}</td>
-                            <td><a href="/events/{{e.id}}/update" class="btn btn-primary">Edit</a></td>
+                            <td>
+                                <div ng-click="cancelEvent(e)" class="btn btn-primary">Cancel Event</div>
+                                <a href="/events/{{e.id}}/update" class="btn btn-primary">Edit</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
