@@ -27,7 +27,7 @@ router.route('/')
     });
 });
 
-router.get('/:UserId',function(req, res){
+router.get('/user/:UserId',function(req, res){
     procedures.eventsByUser(req.params.UserId)
         .then(function(events){
             res.send(events);

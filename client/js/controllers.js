@@ -82,7 +82,7 @@ angular.module('events.controllers', [])
         var userId = 1;
         $http({
             method: 'GET',
-            url: '/api/events/' + userId
+            url: '/api/events/user/' + userId
         }).then(function(success){
             $scope.events = success.data;
             // for(var i = 0;i<success.data.length;i++){
