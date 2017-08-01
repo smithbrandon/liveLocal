@@ -134,4 +134,10 @@ angular.module('events.controllers', [])
             })
         }
 
+    }])
+    .controller('navbar', ['$scope', function($scope) {
+        $('.nav li').on('click', function(){
+            $('.nav li').removeClass("active");
+            $(this).addClass('active');
+        });
     }]);
