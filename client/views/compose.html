@@ -66,15 +66,15 @@
                     <div class="row">
                         <label class="col-sm-2">Tags: </label>
                         <div class="badgeBox col-sm-10">
-                            <span ng-repeat="b in badges" class="badge badge-info">{{b.tag}} X</span>
+                            <span ng-click="removeTag(b)"ng-repeat="b in badges" class="badge badge-info">{{b.tag}} X</span>
                         </div>
                     </div>
                     <div class="input-group">
-                        <input ng-change="checkTagLength()" ng-model="allTags" type="text" class="form-control" placeholder="Tag Description" aria-describedby="basic-add">
+                        <input ng-change="checkTagLength()" ng-model="allTags.tag" type="text" class="form-control" placeholder="Tag Description" aria-describedby="basic-add">
                         <span ng-click="addTag()"class="input-group-addon psuedo-success" id="basic-add">Add</span>
                     </div>
                     <div id='tagList' class="list-group">
-                        <button ng-click="selectTag(t)" type="button" class="list-group-item" ng-repeat="t in tags | orderBy: 'tag' | filter: {tag: allTags}">{{t.tag}}</button>
+                        <button ng-click="selectTag(t)" type="button" class="list-group-item" ng-hide="allTags.tag == null" ng-repeat="t in tags | orderBy: 'tag' | filter: {tag: allTags.tag}">{{t.tag}}</button>
                     </div>
                 </div>
             </div>

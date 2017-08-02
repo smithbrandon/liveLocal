@@ -17,23 +17,47 @@ angular.module('events.controllers', [])
         $('#endDate').datetimepicker();
 
         $('[data-toggle="popover"]').popover();
-        $scope.allTags = null;
+        $scope.allTags = {tag: null};
         $scope.tags = Tag.query();
         
         $scope.checkTagLength = function(){
-            if($scope.allTags.length < 1){
-                $scope.allTags = null;
+            if($scope.allTags.tag == "" || null){
+                $scope.allTags.tag = null;
             }
+        }
+
+         function checkAndAdd(tag, arr) {
+            for(var i=0;i<arr.length; i++){
+                if(arr[i].tag == tag){
+                    return arr[i].id;
+                }
+            }
+            return false;
         }
 
         $scope.badges = [];
 
         $scope.selectTag = function(tag){
-            $scope.allTags = tag.tag;
+            $scope.allTags = tag;
         }
+
         $scope.addTag = function(t){
-            $scope.badges.push($scope.allTags);
-            console.log($scope.badges);
+            var tagExists = checkAndAdd($scope.allTags.tag,$scope.tags);
+            console.log(tagExists);
+            if(!tagExists){
+                var newTag = new Tag({tag: $scope.allTags.tag});
+                newTag.$save(function(success){
+                    $scope.badges.push({id: success.id, tag: success.tag});
+                },function(err){
+                    console.log(err);  
+                });
+            }else{
+                $scope.badges.push({id: $scope.allTags.id, tag: $scope.allTags.tag});
+            }
+            $scope.allTags.tag = null;
+        }
+        $scope.removeTag = function(tag){
+            $scope.badges.splice($scope.badges.indexOf(tag),1);
         }
 
         $scope.save = function () {
@@ -44,7 +68,11 @@ angular.module('events.controllers', [])
                 .then(function(success){
                     $scope.event.lat = success.lat;
                     $scope.event.lng = success.lng;
-                    p.$save(function () {
+                    p.$save(function (success) {
+                        id = success.id;
+                        for(var i=0;i<$scope.badges.length;i++){
+                            Event.tagEvent({id: id, tagId: $scope.badges[i].id})
+                        }
                         $location.path('/');
                     }, function (err) {
                         console.log(err);
@@ -88,7 +116,7 @@ angular.module('events.controllers', [])
         }
 
         $scope.removeTag = function(tag){
-            tag.$delete(function(){
+            Event.untagEvent({eventId: tag.eventId, id: tag.id},function(){
                 getTags();
             });
         }
