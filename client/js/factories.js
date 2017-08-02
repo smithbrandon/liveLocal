@@ -14,7 +14,7 @@ angular.module('events.factories', [])
         },
         tagEvent: {
             method: 'POST',
-            url: '/api/events/:eventId/tag'
+            url: '/api/events/:id/tag'
         },
         untagEvent: {
             method: 'DELETE',
@@ -38,6 +38,11 @@ angular.module('events.factories', [])
     return $resource('/api/tags/:id',{id: '@id'},{
         update: {
             method: 'PUT'
+        },
+        tagsByEvent:{
+            method: 'GET',
+            url: '/api/tags/event/:eventId',
+            isArray: true
         }
     });
 }])

@@ -56,4 +56,14 @@ router.route('/:id')
     });
 })
 
+router.route('/event/:eventId')
+    .get(function(req, res){
+        procedures.tagsByEvent(req.params.eventId)
+            .then(function(tags){
+                res.send(tags);
+            },function(err){
+                console.log(err);
+                res.sendStatus(500);
+            })
+    })
 module.exports = router;

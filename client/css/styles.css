@@ -94,6 +94,13 @@
 }
 .badge-info {
   background-color: #3a87ad;
+  font-size: 1em;
+  padding: 5px 10px;
+  margin: 2px 5px;
+  cursor: pointer;
+}
+.badgeBox{
+    margin: 10px 0;
 }
 #basic-add{
     cursor: pointer;
