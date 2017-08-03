@@ -119,7 +119,7 @@ router.route('/:id/going')
 router.post('/:id/tag', function(req,res){
     console.log(req.params.id);
     console.log(req.body.tag);
-    procedures.addTag(req.params.id,req.body.tag)
+    procedures.addTag(req.params.id,req.body.tagId)
     .then(function(tag){
         res.sendStatus(201);
     },function(err){

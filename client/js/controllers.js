@@ -11,11 +11,54 @@ angular.module('events.controllers', [])
 
 
     }])
-    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http', function ($scope, Geo, $location, Event,$http) {
+    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http','Tag', function ($scope, Geo, $location, Event,$http,Tag) {
+
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
 
         $('[data-toggle="popover"]').popover();
+        $scope.allTags = {tag: null};
+        $scope.tags = Tag.query();
+        
+        $scope.checkTagLength = function(){
+            if($scope.allTags.tag == "" || null){
+                $scope.allTags.tag = null;
+            }
+        }
+
+         function checkAndAdd(tag, arr) {
+            for(var i=0;i<arr.length; i++){
+                if(arr[i].tag == tag){
+                    return arr[i].id;
+                }
+            }
+            return false;
+        }
+
+        $scope.badges = [];
+
+        $scope.selectTag = function(tag){
+            $scope.allTags = tag;
+        }
+
+        $scope.addTag = function(t){
+            var tagExists = checkAndAdd($scope.allTags.tag,$scope.tags);
+            console.log(tagExists);
+            if(!tagExists){
+                var newTag = new Tag({tag: $scope.allTags.tag});
+                newTag.$save(function(success){
+                    $scope.badges.push({id: success.id, tag: success.tag});
+                },function(err){
+                    console.log(err);  
+                });
+            }else{
+                $scope.badges.push({id: $scope.allTags.id, tag: $scope.allTags.tag});
+            }
+            $scope.allTags.tag = null;
+        }
+        $scope.removeTag = function(tag){
+            $scope.badges.splice($scope.badges.indexOf(tag),1);
+        }
 
         $scope.save = function () {
             var p = new Event($scope.event);
@@ -25,7 +68,11 @@ angular.module('events.controllers', [])
                 .then(function(success){
                     $scope.event.lat = success.lat;
                     $scope.event.lng = success.lng;
-                    p.$save(function () {
+                    p.$save(function (success) {
+                        id = success.id;
+                        for(var i=0;i<$scope.badges.length;i++){
+                            Event.tagEvent({id: id, tagId: $scope.badges[i].id})
+                        }
                         $location.path('/');
                     }, function (err) {
                         console.log(err);
@@ -34,12 +81,76 @@ angular.module('events.controllers', [])
 
                 });
         }
+        
 
     }])
-    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', function ($scope, $location, $routeParams, Event, Geo) {
+    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', 'Tag',function ($scope, $location, $routeParams, Event, Geo,Tag) {
         $scope.addressChange = false;
         $('#startDate').datetimepicker();
         $('#endDate').datetimepicker();
+
+        $scope.allTags = null;
+        
+        getTags();
+        
+        function getTags(){
+            $scope.tags = Tag.query();
+            Tag.tagsByEvent({eventId: $routeParams.id},function(success){
+                $scope.badges = success;
+            });
+        }
+    
+        function checkAndAdd(tag, arr) {
+            for(var i=0;i<arr.length; i++){
+                if(arr[i].tag == tag){
+                    return arr[i].id;
+                }
+            }
+            return false;
+        }
+
+        $scope.checkTagLength = function(){
+            if($scope.allTags.length < 1){
+                $scope.allTags = null;
+            }
+        }
+
+        $scope.removeTag = function(tag){
+            Event.untagEvent({eventId: tag.eventId, id: tag.id},function(){
+                getTags();
+            });
+        }
+        $scope.selectTag = function(tag){
+            $scope.allTags = tag.tag;
+        }
+
+        $scope.addTag = function(t){
+            //Figure out how to differentiate Capitalization
+            var tagExists = checkAndAdd($scope.allTags,$scope.tags);
+            if(!tagExists){
+                var newTag = new Tag({tag: $scope.allTags});
+                newTag.$save(function(success){
+                    Event.tagEvent({id: $routeParams.id, tagId: success.id},function(success){
+                        getTags();
+                    },function(err){
+                        console.log(err);
+                    })
+                },function(err){
+                console.log(err);  
+                });
+            }else{
+                var onEvent = checkAndAdd($scope.allTags, $scope.badges);
+                if(!onEvent){
+                    Event.tagEvent({id: $routeParams.id, tagId: onEvent},function(success){
+                        getTags();
+                    },function(err){
+                        console.log(err);
+                    });
+                }else{
+                    alert('Tag already on event');
+                }
+            }    
+        }
 
         Event.get({id: $routeParams.id}, function(success) {
             $scope.event = success;

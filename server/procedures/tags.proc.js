@@ -15,3 +15,6 @@ exports.update = function(id, tag) {
 exports.destroy = function(id) {
     return db.empty('TagDelete', [id]);
 }
+exports.tagsByEvent = function(eventId){
+    return db.rows('tagsByEvent',[eventId]);
+}
