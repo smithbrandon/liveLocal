@@ -6,17 +6,14 @@ and a google map. -->
         <!-- This row holds the event image and the event description  -->
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <img class="img-responsive img-rounded" src="{{ event.images }}">
+                <img class="img-responsive img-rounded single-border" src="{{ event.images }}">
             </div>
 
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 single-border">
                 <p>{{ event.description }}</p>
                 <div class="btn-group btn-group-lg" role="group" aria-label="...">
                     <button type="button" class="btn btn-default">Interested</button>
                     <button type="button" class="btn btn-default">Definitely Going!</button>
-                    <form method="POST" action="">
-<input type="submit" value="Submit" name="submitBtn" onclick="this.disabled=true;this.form.submit();" >
-</form>
                 </div>
             </div>
         </div>
@@ -24,7 +21,7 @@ and a google map. -->
         <!-- This row holds the bullets and the map  -->
         <div class="row">
             <div style="margin: 10px;">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-5 single-border single-right-buffer">
                     <h2>{{ event.title }}</h2>
                     <h3>Start: {{ event.startDate | date: 'short' }}</h3>
                         <h3>End: {{ event.endDate | date: 'short' }}</h3>
@@ -61,7 +58,7 @@ and a google map. -->
                 </div>
             </div>
             <div style="margin: 50px">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6 single-border single-left-buffer">
                     <google-maps id="singleMap" events="eventArray"></google-maps>
                 </div>
             </div>

@@ -88,6 +88,15 @@
     margin: 0;
     padding: 0;
 }
+.single-border {
+    border: 4px solid darkgrey;
+}
+.single-right-buffer {
+    margin-right: 4em;
+}
+.single-left-buffer {
+    margin-left: 1em;
+}
 .psuedo-success{
     background-color: RGBA(92, 184, 92, 1.00);
     color: white;
