@@ -83,11 +83,11 @@ angular.module('events.controllers', [])
         });
     }
 
-    function redirect() {
-        var dest = $location.search().dest;
-        if (!dest) { dest = '/'; }
-        $location.replace().path(dest).search('dest', null);
-    }
+    // function redirect() {
+    //     var dest = $location.search().dest;
+    //     if (!dest) { dest = '/'; }
+    //     $location.replace().path(dest).search('dest', null);
+    // }
 
 }])
 // .controller('UserListController', ['$scope', 'User', 'UserService' function($scope, User, UserService) {
