@@ -61,7 +61,7 @@
 
             <!-- Form group for Tags -->
             <div class="row panel panel-primary form-group">
-                <div class="panel-heading"><h1 class="panel-title"><span class="badge">3</span> Tags</h1></div>
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">4</span> Tags</h1></div>
                 <div class="panel-body">
                     <div class="row">
                         <label class="col-sm-2">Tags: </label>
@@ -80,93 +80,97 @@
             </div>
 
             <!-- Form group for all of the radios -->
-            <div class="row panel panel-default panel-body form-group">
-                <span class="cartEmblem">4</span><h1 class="panel-title">Pet Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.petFriendly" type="radio" name="pet" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.petFriendly" type="radio" name="pet" value="0">No
-                    </label><br><br>
-                
-                <h1 class="panel-title">Family Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Will the event have a family atsmosphere and/or be suitable for children?" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.familyFriendly" type="radio" name="family" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.familyFriendly" type="radio" name="family" value="0">No
-                    </label><br><br>
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">5</span> Additional Information</h1></div>
+                    <div class="panel-body">
+                        <div class="row panel-body">
+                            <h1 class="panel-title">Pet Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span></h1>
+                        <label class="radio-inline">
+                            <input ng-model="event.petFriendly" type="radio" name="pet" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.petFriendly" type="radio" name="pet" value="0">No
+                        </label><br><br>
+                    
+                    <h1 class="panel-title">Family Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Will the event have a family atsmosphere and/or be suitable for children?" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.familyFriendly" type="radio" name="family" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.familyFriendly" type="radio" name="family" value="0">No
+                        </label><br><br>
 
-                <h1 class="panel-title">Smoke Free:</h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.smokeFree" type="radio" name="smokefree" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.smokeFree" type="radio" name="smokefree" value="0">No
-                    </label><br><br>
+                    <h1 class="panel-title">Smoke Free:</h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.smokeFree" type="radio" name="smokefree" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.smokeFree" type="radio" name="smokefree" value="0">No
+                        </label><br><br>
 
-                <h1 class="panel-title">Alcohol Free</h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="0">No
-                    </label><br><br>
-                
-                <h1 class="panel-title">Event Setting:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event be an outdoor or indoor event?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.outdoors" type="radio" name="eventsetting1" value="1">Outdoor
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.outdoors" type="radio" name="eventsetting2" value="0">Indoor
-                    </label><br><br>
+                    <h1 class="panel-title">Alcohol Free</h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.alcoholFree" type="radio" name="alcoholfree" value="0">No
+                        </label><br><br>
+                    
+                    <h1 class="panel-title">Event Setting:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event be an outdoor or indoor event?</p>" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.outdoors" type="radio" name="eventsetting1" value="1">Outdoor
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.outdoors" type="radio" name="eventsetting2" value="0">Indoor
+                        </label><br><br>
 
-                <h1 class="panel-title">Time of Day:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event during the day or night?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.daytime" type="radio" name="eventtime1" value="1">Day
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.daytime" type="radio" name="eventtime2" value="0">Night         
-                    </label><br><br>
+                    <h1 class="panel-title">Time of Day:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event during the day or night?</p>" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.daytime" type="radio" name="eventtime1" value="1">Day
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.daytime" type="radio" name="eventtime2" value="0">Night         
+                        </label><br><br>
 
-                <h1 class="panel-title">Cost:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Event Costs:</h6><ul><li>$ = $1-$20</li><li>$$ = $21-$50</li><li>$$$ = $50+</li></ul" data-html="true"></span></h1>
-                    <br>              
-                    <label class="radio-inline">
-                        <input ng-model="event.cost" type="radio" name="cost" value="0">Free
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.cost" type="radio" name="cost" value="1"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.cost" type="radio" name="cost" value="2"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.cost" type="radio" name="cost" value="3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-                    </label><br><br>
+                    <h1 class="panel-title">Cost:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Event Costs:</h6><ul><li>$ = $1-$20</li><li>$$ = $21-$50</li><li>$$$ = $50+</li></ul" data-html="true"></span></h1>
+                        <br>              
+                        <label class="radio-inline">
+                            <input ng-model="event.cost" type="radio" name="cost" value="0">Free
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.cost" type="radio" name="cost" value="1"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.cost" type="radio" name="cost" value="2"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.cost" type="radio" name="cost" value="3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                        </label><br><br>
 
-                <h1 class="panel-title">18+<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 18?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.isEighteen" type="radio" name="age18" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.isEighteen" type="radio" name="age18" value="0">No
-                    </label><br><br>
+                    <h1 class="panel-title">18+<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 18?</p>" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.isEighteen" type="radio" name="age18" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.isEighteen" type="radio" name="age18" value="0">No
+                        </label><br><br>
 
-                <h1 class="panel-title">21+<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 21?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.isTwentyOne" type="radio" name="age21" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.isTwentyOne" type="radio" name="age21" value="0">No
-                    </label><br>
+                    <h1 class="panel-title">21+<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event have a minimum age of 21?</p>" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.isTwentyOne" type="radio" name="age21" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.isTwentyOne" type="radio" name="age21" value="0">No
+                        </label><br>
+                    </div>
+                </div>
             </div>
 
     <!-- Form group for event times -->
