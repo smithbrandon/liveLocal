@@ -1,63 +1,71 @@
 <!--<form ng-submit="save()">-->
 <div class="container">
     <div class="page-header">
-        <h1>Create an Event</h1>
+        <h1>Update an Event</h1>
     </div>
     <form ng-submit="save()" class="my-form">
 
         <div class="well well-lg col-sm-6 col-sm-offset-3">
     <!-- Form group for event, sum, and desc -->
             <div class="row panel panel-primary form-group">
-                <div class="form-heading"><span class="cartEmblem">1</span>  Event Information</div><br><br>
-                <h1 class="panel-title">Event Name:</h1>
-                    <br>
-                    <input ng-model="event.title" class="col-sm-12 form-rounded" type="text" name="title" required placeholder="Title:"><br><br>
-                
-                <h1 class="panel-title">Summary:</h1>
-                    <br>
-                    <textarea ng-model="event.summary" class="col-sm-12 form-rounded" type="text" name="summary" required placeholder="Summary:"></textarea><br><br><br>
-                    
-                <h1 class="panel-title">Description:</h1>
-                    <br>
-                    <textarea ng-model="event.description" class="col-sm-12 form-rounded" type="text" name="description" required placeholder="Description"></textarea>
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">1</span> Event Information</h1></div>
+                    <div class="panel-body">
+                        <h1 class="panel-title">Event Name:</h1>
+                            <br>
+                            <input ng-model="event.title" class="col-sm-12 form-rounded" type="text" name="title" required placeholder="Title:"><br><br>
+                        
+                        <h1 class="panel-title">Summary:</h1>
+                            <br>
+                            <textarea ng-model="event.summary" class="col-sm-12 form-rounded" type="text" name="summary" required placeholder="Summary:"></textarea><br><br><br>
+                            
+                        <h1 class="panel-title">Description:</h1>
+                            <br>
+                            <textarea ng-model="event.description" class="col-sm-12 form-rounded" type="text" name="description" required placeholder="Description"></textarea>
+                </div>
             </div>
 
     <!-- For group for address, city, state, zip -->
-            <div class="row panel panel-default panel-body form-group">
-                <form class="form-inline">
-                    <div class="form-heading"><span class="cartEmblem">2</span>  Event Address</div><span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="The address of the event." data-html="true"></span></h1><br><br>
-                    <input ng-change="addressChange=true" ng-model="event.address1" class="col-sm-6 form-rounded" type="text" name="address1" placeholder="Address 1">
-                    <input ng-change="addressChange=true" ng-model="event.address2" class="col-sm-6 form-rounded" type="text" name="address2" placeholder="Address 2"><br><br>
-                 </form>   
-                <form class="form-inline">
-                    <input ng-change="addressChange=true" ng-model="event.city" class="col-sm-4 form-rounded" type="text" name="city" placeholder="City">
-                    <input ng-change="addressChange=true" ng-model="event.state" class="col-sm-4 form-rounded" type="text" name="state" placeholder="State">
-                    <input ng-change="addressChange=true" ng-model="event.zip" class="col-sm-4 form-rounded" type="text" name="zip" placeholder="Zip">
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">2</span> Event Address:</h1></div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <h1></h1>
+                        <input ng-change="addressChange=true" ng-model="event.address1" class="col-sm-6 form-rounded" type="text" name="address1" placeholder="Address 1">
+                        <input ng-change="addressChange=true" ng-model="event.address2" class="col-sm-6 form-rounded" type="text" name="address2" placeholder="Address 2"><br><br>
+                    </form>   
+                    <form class="form-inline">
+                        <input ng-change="addressChange=true" ng-model="event.city" class="col-sm-4 form-rounded" type="text" name="city" placeholder="City">
+                        <input ng-change="addressChange=true" ng-model="event.state" class="col-sm-4 form-rounded" type="text" name="state" placeholder="State">
+                        <input ng-change="addressChange=true" ng-model="event.zip" class="col-sm-4 form-rounded" type="text" name="zip" placeholder="Zip">
+                    </form>
+                </div>
             </div>
 
     <!-- Form group for image, ticket, ticketsUrl, eventUrl -->
-            <div class="row panel panel-default panel-body form-group">
-                <div class="form-heading"><span class="cartEmblem">3</span>  Images and Tickets</div><br><br>
-                <h1 class="panel-title">Image:</h1>
-                    <br>
-                    <input ng-model="event.images" class="col-sm-12 form-rounded" type="text" name="image" placeholder="Image"><br><br>
-                
-                <h1 class="panel-title">Tickets:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event require a ticket to enter?</p>" data-html="true"></span></h1>
-                    <br>
-                    <label class="radio-inline">
-                        <input ng-model="event.tickets" ng-value="event.ticket" type="radio" name="ticket" value="1">Yes
-                    </label>
-                    <label class="radio-inline">
-                        <input ng-model="event.tickets" ng-value="event.tickets" type="radio" name="ticket" value="0">No
-                    </label><br><br>
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">3</span>  Images and Tickets</h1></div>
+                <div class="panel-body">
+                    <h1 class="panel-title">Image:</h1>
+                        <br>
+                        <input ng-model="event.images" class="col-sm-12 form-rounded" type="text" name="image" placeholder="Image"><br><br>
+                    
+                    <h1 class="panel-title">Tickets:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event require a ticket to enter?</p>" data-html="true"></span></h1>
+                        <br>
+                        <label class="radio-inline">
+                            <input ng-model="event.tickets" ng-value="event.ticket" type="radio" name="ticket" value="1">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input ng-model="event.tickets" ng-value="event.tickets" type="radio" name="ticket" value="0">No
+                        </label><br><br>
 
-                <h1 class="panel-title">Ticket URL:</h1>
-                    <br>
-                    <input ng-model="event.ticketUrl" class="col-sm-12 form-rounded" type="text" name="ticketurl" placeholder="URL of Ticket"><br><br>
-                
-                <h1 class="panel-title">Event URL:</h1>
-                    <br>
-                    <input ng-model="event.eventUrl" class="col-sm-12 form-rounded" type="text" name="eventurl" placeholder="URL of Event"><br>
+                    <h1 class="panel-title">Ticket URL:</h1>
+                        <br>
+                        <input ng-model="event.ticketUrl" class="col-sm-12 form-rounded" type="text" name="ticketurl" placeholder="URL of Ticket"><br><br>
+                    
+                    <h1 class="panel-title">Event URL:</h1>
+                        <br>
+                        <input ng-model="event.eventUrl" class="col-sm-12 form-rounded" type="text" name="eventurl" placeholder="URL of Event"><br>
+                </div>
             </div>
     <!-- Form group for Tags -->
                 <div class="row panel panel-primary form-group">
@@ -79,8 +87,9 @@
                     </div>
                 </div>
     <!-- Form group for all of the radios -->
-            <div class="row panel panel-default panel-body form-group">
-                <div class="form-heading"><span class="cartEmblem">4</span>  Additional Information</div><span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Check the boxes that apply to the event.</p>" data-html="true"></span><br><br>
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">5</span> Additional Information</h1></div>
+                <div class="panel-body">
                 <h1 class="panel-title">Pet Friendly:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<p>Will the event allow attendees to bring their pet?</p>" data-html="true"></span></h1>
                     <br>
                     <label class="radio-inline">
@@ -167,6 +176,7 @@
                     <label class="radio-inline">
                         <input ng-model="event.isTwentyOne" ng-value="event.isTwentyOne" type="radio" name="age21" value="0">No
                     </label><br>
+                </div>
             </div>
 
     <!-- Form group for event times -->
