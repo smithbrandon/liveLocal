@@ -119,4 +119,8 @@ html, body {
 }
 .nav {
     background-color: white;
+    width: 100%;
+}
+.navbar-brand .navbar-default>.navbar-nav>.active>a, .navbar-brand .navbar-default .navbar-nav>.active>a:focus, .navbar-brand .navbar-default .navbar-nav>.active>a:hover {
+    background-color: white;
 }
