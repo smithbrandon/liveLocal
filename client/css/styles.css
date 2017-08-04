@@ -1,12 +1,14 @@
 #mainMap>#map{
     height: 200px;
+    width: 100%;
+     max-width: 1280px; 
 }
 #singleMap>#map{
     height: 400px;
 }
 .content-wrapper{
     width: 100%;
-    max-width: 1440px;
+    max-width: 1280px;
     display: block;
     margin: 0 auto;
 }
@@ -14,9 +16,10 @@
     max-height: 160px;
     overflow-y: scroll;
 }
-#heroImg{
+ #heroImg{
     width: 100%;
-}
+    margin-top: -20px;
+} 
 #startDate, #endDate{
    width : 177px;
  }
