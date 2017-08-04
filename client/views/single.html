@@ -11,10 +11,10 @@ and a google map. -->
 
             <div class="col-xs-12 col-sm-6 single-border">
                 <p>{{ event.description }}</p>
-                <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                    <button type="button" ng-model="interestedButton" class="btn btn-default">Interested</button>
-                    <button type="button" class="btn btn-default">Definitely Going!</button>
-                </div>
+                <form action="">
+  <input type="radio" name="user interest" value="interested"> I'm Interested<br>
+  <input type="radio" name="user interest" value="attending"> I'm going!<br>
+</form>
             </div>
         </div>
 
