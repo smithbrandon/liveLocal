@@ -97,6 +97,9 @@
 .single-left-buffer {
     margin-left: 1em;
 }
+html, body {
+    background-color: darkgrey
+}
 .psuedo-success{
     background-color: RGBA(92, 184, 92, 1.00);
     color: white;

@@ -69,7 +69,7 @@
             </div>
     <!-- Form group for Tags -->
                 <div class="row panel panel-primary form-group">
-                    <div class="panel-heading"><h1 class="panel-title"><span class="badge">3</span> Tags</h1></div>
+                    <div class="panel-heading"><h1 class="panel-title"><span class="badge">4</span> Tags</h1></div>
                     <div class="panel-body">
                         <div class="row">
                             <label class="col-sm-2">Tags: </label>
@@ -180,36 +180,38 @@
             </div>
 
     <!-- Form group for event times -->
-            <div class="row panel panel-default panel-body form-group">
-                <div class="form-heading"><span class="cartEmblem">5</span>  Event Dates</div><br><br>
-                <h1 class="panel-title">Event Start Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span></h1>
+            <div class="row panel panel-primary form-group">
+                <div class="panel-heading"><h1 class="panel-title"><span class="badge">6</span> Event Dates</h1></div>
+                <div class="panel-body">
+                    <h1 class="panel-title">Event Start Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span></h1>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input ng-model="event.startDate" ng-value="event.startDate" id="startDate" type='text' class="form-control form-rounded" />
+                                            <span class="input-group-addon" id="input-select">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                <h1 class="panel-title">Event End Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span></h1>
                     <br>
                     <div class="container">
                         <div class="row">
                             <div class='col-sm-6'>
                                 <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input ng-model="event.startDate" ng-value="event.startDate" id="startDate" type='text' class="form-control form-rounded" />
+                                    <div class='input-group date' id='datetimepicker2'>
+                                        <input ng-model="event.endDate" ng-value="event.endDate" id="endDate" type='text' class="form-control form-rounded" />
                                         <span class="input-group-addon" id="input-select">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            <h1 class="panel-title">Event End Date & Time:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="<h6>Format Example:</h6><p>12/25/2017 09:30 PM" data-html="true"></span></h1>
-                <br>
-                <div class="container">
-                    <div class="row">
-                        <div class='col-sm-6'>
-                            <div class="form-group">
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input ng-model="event.endDate" ng-value="event.endDate" id="endDate" type='text' class="form-control form-rounded" />
-                                    <span class="input-group-addon" id="input-select">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -231,11 +233,10 @@
                     <br>
                     <input ng-model="event.userId" ng-value="event.userId" type="number" value="1"><br>
             
-                <h1 class="panel-title">Status:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span></h1>
+                <h1 class="panel-title">Status:<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="right" title="Input '1' until we set up prerender and passport" data-html="true"></span></h1><br>
                     <br>
                     <input ng-model="event.status" ng-value="event.userId" type="number" value="1"><br>
-            
-                <input type="submit" value="Submit">
+                <button type="submit" class="btn btn-success" value="Submit">Submit</button>
             </div>
         </div>
     </form>
