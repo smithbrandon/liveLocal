@@ -117,3 +117,6 @@ html, body {
 #basic-add{
     cursor: pointer;
 }
+.nav {
+    background-color: white;
+}
