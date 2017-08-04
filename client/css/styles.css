@@ -1,6 +1,13 @@
+body{
+    overflow-x: hidden;
+}
 #mainMap>#map{
     height: 200px;
     width: 100%;
+    border-bottom: 5px solid white;
+    -webkit-box-shadow: 10px 10px 24px -2px rgba(169,169,169,1);
+    -moz-box-shadow: 10px 10px 24px -2px rgba(169,169,169,1);
+    box-shadow: 10px 10px 24px -2px rgba(169,169,169,1);
 }
 #singleMap>#map{
     height: 400px;
@@ -58,12 +65,25 @@
     padding-left: 15px;
 } 
  /*List-page!!!!*/
- .list-group-item {
-     margin-top: 5px;
-     margin-bottom: 5px;
-     border: 1px solid darkblue;
+ .event.list-group-item {
+     margin-top: 15px;
+     margin-bottom: 15px;
+     margin-left:2%;
+     margin-right:2%;
+     border: 1px solid transparent;
+     -webkit-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
+    -moz-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
+    box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
  }
-
+.centerWrap{
+    position: relative;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+.listBox{
+    padding: 25px;
+}
  .event-thumbnail {
      height: 350px;
      width: 100%;
@@ -71,9 +91,10 @@
  }
  .event-images{
      height: 150px;
+     background-position-x: 65%;
      width: 100%;
      display: block;
-     background-size: contain;
+     background-size: cover;
  }
  .flex-event-image {
      position: relative;
