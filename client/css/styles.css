@@ -158,3 +158,20 @@ html, body {
 .navbar-brand .navbar-default>.navbar-nav>.active>a, .navbar-brand .navbar-default .navbar-nav>.active>a:focus, .navbar-brand .navbar-default .navbar-nav>.active>a:hover {
     background-color: white;
 }
+
+.single-ladies {
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+.single-image {
+    display: inline-block;
+}
+
+#image {
+    float:left;
+}
+
+#image {
+    float: right;
+}
