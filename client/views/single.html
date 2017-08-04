@@ -2,62 +2,61 @@
 and a google map. -->
 
 <div class="container">
-    <div style="margin: 10px;">
+    <div class="row">
+    <div class="single-ladies single-image" id="image">
         <!-- This row holds the event image and the event description  -->
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                 <img class="img-responsive img-rounded single-border" src="{{ event.images }}">
-            </div>
-
-            <div class="col-xs-12 col-sm-6 single-border">
                 <p>{{ event.description }}</p>
                 <form action="">
-  <input type="radio" name="user interest" value="interested"> I'm Interested<br>
-  <input type="radio" name="user interest" value="attending"> I'm going!<br>
-</form>
+                    <input type="radio" name="user interest" value="interested"> I'm Interested<br>
+                    <input type="radio" name="user interest" value="attending"> I'm going!<br>
+                </form>
+            </div>
             </div>
         </div>
 
         <!-- This row holds the bullets and the map  -->
         <div class="row">
-            <div style="margin: 10px;">
+            <div class="single ladies">
                 <div class="col-xs-12 col-sm-5 single-border single-right-buffer">
                     <h2>{{ event.title }}</h2>
                     <h3>Start: {{ event.startDate | date: 'short' }}</h3>
-                        <h3>End: {{ event.endDate | date: 'short' }}</h3>
-                        <h3>Event address:</h3>
-                            <h3 class="compressed">{{ event.address1 }}</h3>
-                            <h3 class="compressed">{{ event.address2 }}</h3>
-                            <h3 class="compressed">{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
-                            <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
-                            <dl>
-                                <dt>Are tickets required?</dt>
-                                <dd>{{ event.tickets | yesNo }}</dd>
-                                <dt>Where to get tickets if applicable</dt>
-                                <dd>{{ event.ticketsUrl }}</dd>
-                                <dt>Event website if applicable</dt>
-                                <dd>{{ event.eventUrl }}</dd>
-                                <dt>Can I bring my pet?</dt>
-                                <dd>{{ event.petFriendly | yesNo }}
-                                    <dd>
-                                        <dt>Is the event family-oriented?</dt>
-                                        <dd>{{ event.familyFriendly | yesNo }}</dd>
-                                        <dt>Will smoking be permitted?</dt>
-                                        <dd>{{ event.smokeFree | yesNo }}</dd>
-                                        <dt>Is alcohol being served?</dt>
-                                        <dd>{{ event.alcoholFree | yesNo }}</dd>
-                                        <dt>Is the event being held outdoors?</dt>
-                                        <dd>{{ event.outdoors | yesNo }}</dd>
-                                        <dt>Is the event being held in the daytime?</dt>
-                                        <dd>{{ event.daytime | yesNo }}</dd>
-                                        <dt>Do I have to be 18 or older?</dt>
-                                        <dd>{{ event.isEighteen | yesNo }}</dd>
-                                        <dt>Do I have to be 21 or older?</dt>
-                                        <dd>{{ event.isTwentyOne | yesNo }}</dd>
-                            </dl>
+                    <h3>End: {{ event.endDate | date: 'short' }}</h3>
+                    <h3>Event address:</h3>
+                    <h3 class="compressed">{{ event.address1 }}</h3>
+                    <h3 class="compressed">{{ event.address2 }}</h3>
+                    <h3 class="compressed">{{ event.city }} {{ event.state }} {{ event.zip }}</h3>
+                    <h4 class="price">Cost, if any: {{ event.cost | currency }}</h4>
+                    <dl>
+                        <dt>Are tickets required?</dt>
+                        <dd>{{ event.tickets | yesNo }}</dd>
+                        <dt>Where to get tickets if applicable</dt>
+                        <dd>{{ event.ticketsUrl }}</dd>
+                        <dt>Event website if applicable</dt>
+                        <dd>{{ event.eventUrl }}</dd>
+                        <dt>Can I bring my pet?</dt>
+                        <dd>{{ event.petFriendly | yesNo }}
+                            <dd>
+                                <dt>Is the event family-oriented?</dt>
+                                <dd>{{ event.familyFriendly | yesNo }}</dd>
+                                <dt>Will smoking be permitted?</dt>
+                                <dd>{{ event.smokeFree | yesNo }}</dd>
+                                <dt>Is alcohol being served?</dt>
+                                <dd>{{ event.alcoholFree | yesNo }}</dd>
+                                <dt>Is the event being held outdoors?</dt>
+                                <dd>{{ event.outdoors | yesNo }}</dd>
+                                <dt>Is the event being held in the daytime?</dt>
+                                <dd>{{ event.daytime | yesNo }}</dd>
+                                <dt>Do I have to be 18 or older?</dt>
+                                <dd>{{ event.isEighteen | yesNo }}</dd>
+                                <dt>Do I have to be 21 or older?</dt>
+                                <dd>{{ event.isTwentyOne | yesNo }}</dd>
+                    </dl>
                 </div>
             </div>
-            <div style="margin: 50px">
+            <div class="single ladies">
                 <div class="col-xs-12 col-sm-6 single-border single-left-buffer">
                     <google-maps id="singleMap" events="eventArray"></google-maps>
                 </div>
