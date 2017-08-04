@@ -1,7 +1,6 @@
 #mainMap>#map{
     height: 200px;
     width: 100%;
-     max-width: 1280px; 
 }
 #singleMap>#map{
     height: 400px;
@@ -158,6 +157,7 @@ html, body {
 .navbar-brand .navbar-default>.navbar-nav>.active>a, .navbar-brand .navbar-default .navbar-nav>.active>a:focus, .navbar-brand .navbar-default .navbar-nav>.active>a:hover {
     background-color: white;
 }
+<<<<<<< HEAD
 
 .single-ladies {
     margin: 10px;
@@ -174,4 +174,16 @@ html, body {
 
 #image {
     float: right;
+=======
+.navbar-brand img{
+    margin-top:-8px;
+    vertical-align: top;
+}
+nav{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+>>>>>>> 00bfabd3753c4b805387210496c0a6a369efcb83
 }
