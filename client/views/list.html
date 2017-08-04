@@ -4,13 +4,71 @@
 
 <div class="container-fluid">
     <img id="heroImg" src="/img/lookouts_hor.jpg">
+    <div id='searchBar'>
+        <div id="searchTab">TRY SOMETHING NEW</div>
+        <div class="form-inline col-sm-offset-1">
+            <div class="form-group">
+                <input ng-model="search.tags" type="text" class="form-control" placeholder="Event tags: sererate tags with ;">
+            </div>
+            <select class="col-sm-offset-1" ng-options="cat.id as cat.name for cat in cats" ng-model="selected"></select>
+            <div class="input-group input-daterange col-sm-offset-1 col-sm-4">
+                <input type="text" class="form-control" value="2012-04-05">
+                <div class="input-group-addon">to</div>
+                <input type="text" class="form-control" value="2012-04-19">
+            </div>
+            <div ng-click="search()" class="btn btn-primary pull-right">Search</div>
+        </div>
+        <div class="form-inline row pad-sm-top col-sm-offset-1">
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.petFriendly" value="1">Pet Friendly</label>
+            </div>
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.familyFriendly" value="1">Family Friendly</label>
+            </div>
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.smokeFree" value="1">Smoke Free</label>
+            </div>
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.alcoholFree" value="1">Alcohol Free</label>
+            </div>
+            <a class="pull-right" href="#">Advanced Search</a>
+        </div>
+        <div class="form-inline row pad-sm-top col-sm-offset-1">
+            <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.isEighteen" value="1">18+</label>
+            </div>
+            <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.isTwentyOne" value="1">21+</label>
+            </div>
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.outdoors" value="1">Outdoor Event</label>
+            </div>
+            <div class="checkbox col-sm-2">
+                <label><input type="checkbox" ng-model="search.daytime" value="1">Daytime Event</label>
+            </div>
+        </div>
+        <div class="form-inline row pad-sm-top col-sm-offset-1">
+            <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.priceFree" value="1">Free</label>
+            </div>
+                <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.priceOne" value="1">$</label>
+            </div>
+                <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.priceTwo" value="1">$$</label>
+            </div>
+                <div class="checkbox col-sm-1">
+                <label><input type="checkbox" ng-model="search.priceThree" value="1">$$$</label>
+            </div>
+        </div>
+    </div>
     <div class="page-header row">
         <h1 class="col-sm-10 col-xs-12">Events</h1>
     </div>
 </div>
 <google-maps id="mainMap" events="events"></google-maps>
-<flex-slider slide="e in events track by $index">
-	            <li>
+<flex-slider slide="e in events track by <1i></1i>ndex">
+	            <li>    
                     <div class="thumbnail image-thumbnail">
                     <div class="flex-event-image" ng-style="{ 'background-image': 'url(' + e.images + ')' }" class="thumbnail image-thumbnail">
                         <a class="btn btn-info" role="button" ng-href="/events/{{ e.id }}">View Event</a>

@@ -1,7 +1,7 @@
 angular.module('events.controllers', [])
-    .controller('EventListController', ['$scope', 'Event','$http','Geo', function ($scope, Event,$http,Geo) {
+    .controller('EventListController', ['$scope','Category','Event','$http','Geo', function ($scope,Category, Event,$http,Geo) {
         $scope.events = Event.query();
-
+        $scope.cats = Category.query();
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event', function ($scope, $routeParams, Event) {
         $scope.event = Event.get({ id: $routeParams.id },function(){
