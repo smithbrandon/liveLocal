@@ -59,7 +59,7 @@
 
  .event-thumbnail {
      height: 300px;
-     width: 275px;
+     width: 100%;
      /*margin: 5px 5px 5px 5px;*/
  }
  .event-images{
@@ -71,7 +71,7 @@
  .flex-event-image {
      position: relative;
      height: 150px;
-     width: 30%;
+     width: 25%;
      display: inline-block;
      background-size: contain;
 
