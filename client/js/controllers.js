@@ -10,7 +10,7 @@ angular.module('events.controllers', [])
         $scope.event = Event.get({ id: $routeParams.id },function(){
             $scope.eventArray = [$scope.event];
         });
-
+        console.log($scope.event);
 
 
     }])
