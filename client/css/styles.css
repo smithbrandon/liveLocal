@@ -57,7 +57,8 @@
 } 
  /*List-page!!!!*/
  .list-group-item {
-     margin-bottom: 1px;
+     margin-top: 5px;
+     margin-bottom: 5px;
      border: 1px solid darkblue;
  }
 
