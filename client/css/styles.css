@@ -48,8 +48,15 @@ body{
     height: 34px;
     float: left;
  }
+ng-view{
+    background-color: lightgray;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 
- textarea{
+}
+textarea{
      resize: none;
      height: 200px;
      background-color: #e8e8ee;
@@ -127,7 +134,7 @@ body{
     margin-left: 1em;
 }
 html, body {
-    background-color: lightgrey
+    background-color: darkgray;
 }
 .psuedo-success{
     background-color: RGBA(92, 184, 92, 1.00);
