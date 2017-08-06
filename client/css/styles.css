@@ -212,11 +212,11 @@ nav{
      border-top: none !important; 
  }
 #searchTable{
-    font-size: 12px;
+    font-size: 14px;
 }
 #searchTable tr td{
     line-height: 10px;
-    font-size: 10px;
+    font-size: 14px;
     padding: 5px;
 }
 #searchTable td:first-child{
@@ -241,7 +241,7 @@ nav{
     display: block;
     width: 100%;
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
     background-color: white;
          -webkit-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
     -moz-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
@@ -250,10 +250,24 @@ nav{
     padding: 10px;
 }
 table.table.info{
+    font-size: 18px;
+}
+.fa-check{
+    color: RGBA(92, 184, 92, 1.00);
+}
+.fa-times{
+    color: RGBA(211, 27, 54, 1.00);
+}
+.eventTagBox{
+    margin-top: 25px;
     display: block;
-    width: 100%;
+}
+.interested{
+    margin-top: -16px;
+}
+
+.whiteBox{
     position: relative;
-    margin: 0 auto;
     background-color: white;
          -webkit-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
     -moz-box-shadow: 10px 10px 24px -2px rgba(148,148,148,1);
@@ -262,9 +276,7 @@ table.table.info{
     padding: 10px;
     margin-bottom: 25px;
 }
-.fa .fa-check{
-    background-color: greenyellow;
-}
-.fa .fa-times{
-    background-color: red;
+.whiteBox p{
+    font-size: 16px;
+    line-height: 24px;
 }

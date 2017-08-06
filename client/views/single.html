@@ -8,15 +8,19 @@ and a google map. -->
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <img class="img-responsive img-rounded" src="{{ event.images }}">
-                <div class="btn-group btn-group-justified">
+                <div class="btn-group btn-group-justified interested">
                     <a href="#" class="btn btn-primary">Interested In Event</a>
                     <a href="#" class="btn btn-primary">Going To Event</a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 whiteBox">
                 <h2>{{ event.title }}</h2>
                 <h4>{{ event.startDate | date: 'short' }} - {{ event.endDate | date: 'short' }}</h4>
                 <p>{{ event.description }}</p>
+                <div class="eventTagBox">
+                    Tags: 
+                    <div class="badge badge-info" ng-repeat="tag in event.tags">{{tag.tag}}</div>
+                </div>
             </div>
             </div>
         </div>
@@ -24,41 +28,43 @@ and a google map. -->
         <!-- This row holds the bullets and the map  -->
         <div class="row pad-lg-top">
             <div class="col-sm-6">
-                <div class="table-responsive">
-                    <table class="table info">
-                        <tbody>
-                            <tr ng-hide="event.address1 == null || event.address1 == ''">
-                                <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-                                <td>Address:</td>
-                                <td>{{event.address1}}</td>
-                            </tr>
-                            <tr ng-hide="event.address2 == undefined || event.address2 == ''">
-                                <td></td>
-                                <td></td>
-                                <td>{{event.address2}}</td>
-                            </tr>
-                            <tr ng-hide="event.city == undefined || event.city == ''">
-                                <td></td>
-                                <td></td>
-                                <td>{{event.city}}, {{event.state}} {{event.zip}}</td>
-                            </tr>
-                            <tr ng-hide="event.phone == undefined || event.phone == ''">
-                                <td><i class="fa fa-mobile" aria-hidden="true"></i></td>
-                                <td>Telephone:</td>
-                                <td>{{event.phone}}</td>
-                            </tr>
-                            <tr ng-hide="event.email == undefined || event.email == ''">
-                                <td><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                                <td>Email:</td>
-                                <td>{{event.email}}</td>
-                            </tr>
-                            <tr ng-hide="event.eventUrl == undefined || event.eventUrl == ''">
-                                <td><i class="fa fa-globe" aria-hidden="true"></i></td>
-                                <td>Web: </td>
-                                <td><a href="{{event.eventUrl}}" target="_blank">Event Link</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="center">
+                    <div class="table-responsive">
+                        <table class="table info">
+                            <tbody>
+                                <tr ng-hide="event.address1 == null || event.address1 == ''">
+                                    <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                                    <td>Address:</td>
+                                    <td>{{event.address1}}</td>
+                                </tr>
+                                <tr ng-hide="event.address2 == undefined || event.address2 == ''">
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{event.address2}}</td>
+                                </tr>
+                                <tr ng-hide="event.city == undefined || event.city == ''">
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{event.city}}, {{event.state}} {{event.zip}}</td>
+                                </tr>
+                                <tr ng-hide="event.phone == undefined || event.phone == ''">
+                                    <td><i class="fa fa-mobile" aria-hidden="true"></i></td>
+                                    <td>Telephone:</td>
+                                    <td>{{event.phone}}</td>
+                                </tr>
+                                <tr ng-hide="event.email == undefined || event.email == ''">
+                                    <td><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
+                                    <td>Email:</td>
+                                    <td>{{event.email}}</td>
+                                </tr>
+                                <tr ng-hide="event.eventUrl == undefined || event.eventUrl == ''">
+                                    <td><i class="fa fa-globe" aria-hidden="true"></i></td>
+                                    <td>Web: </td>
+                                    <td><a href="{{event.eventUrl}}" target="_blank">{{event.eventUrl}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="center">
                     <div class="table-responsive">
@@ -67,43 +73,45 @@ and a google map. -->
                                 <tr>
                                     <td><i class="fa fa-ticket" aria-hidden="true"></i></td>
                                     <td>Tickets Required: </td>
-                                    <td>{{event.tickets | yesNo}}</td>
+                                    <td><i class="fa fa-{{event.tickets | yesNo}}" aria-hidden="true"></i></td>
                                     <td><i class="fa fa-credit-card-alt" aria-hidden="true"></i></td>
                                     <td>Purchase Link: </td>
-                                    <td><a href="{{ event.ticketsUrl }}" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>
-    </a></td>
+                                    <td>
+                                        <a ng-hide="event.ticketsUrl.length === 0" href="{{ event.ticketsUrl }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                        <span ng-show="event.ticketsUrl.length === 0">N/A</span>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa fa-child" aria-hidden="true"></i></td>
                                     <td>Family Friendly: </td>
-                                    <td>{{ event.familyFriendly | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.familyFriendly | yesNo}}" aria-hidden="true"></i></td>
                                     <td><i class="fa fa-paw" aria-hidden="true"></i></td>
                                     <td>Pet Friendly: </td>
-                                    <td>{{ event.petFriendly | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.petFriendly | yesNo}}" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa fa-fire" aria-hidden="true"></i></td>
                                     <td>Smoking Allowed: </td>
-                                    <td>{{ event.smokeFree | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.smokeFree | yesNo}}" aria-hidden="true"></i></td>
                                     <td><i class="fa fa-beer" aria-hidden="true"></i></td>
                                     <td>Alcohol Allowed: </td>
-                                    <td>{{ event.alcoholFree | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.alcoholFree | yesNo}}" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa fa-leaf" aria-hidden="true"></i></td>
                                     <td>Outdoor Event: </td>
-                                    <td>{{ event.outdoors | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.outdoors | yesNo}}" aria-hidden="true"></i></td>
                                     <td><i class="fa fa-moon-o" aria-hidden="true"></i></td>
                                     <td>Night Event: </td>
-                                    <td>{{ event.daytime | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.daytime | yesNo}}" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa fa-male" aria-hidden="true"></i></td>
                                     <td>Ages 18+ Only: </td>
-                                    <td>{{ event.isEighteen | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.isEighteen | yesNo}}" aria-hidden="true"></i></td>
                                     <td><i class="fa fa-id-card-o" aria-hidden="true"></i></td>
                                     <td>Ages 21+ Only: </td>
-                                    <td>{{ event.alcoholFree | yesNo }}</td>
+                                    <td><i class="fa fa-{{event.isTwentyOne | yesNo}}" aria-hidden="true"></i></td>
                                 </tr>
                             <tbody>
                         </table>

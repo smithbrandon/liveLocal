@@ -35,9 +35,11 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
             return 'err';
         }else{
             if(num === 0){
-                return 'NO';
+                // return 'NO';
+                return 'times';
             }else{
-                return 'YES';
+                // return 'YES';
+                return 'check';
             }
         }
     }

@@ -6,11 +6,13 @@ angular.module('events.controllers', [])
             console.log($scope.searchItems);
         }
     }])
-    .controller('SingleEventController', ['$scope', '$routeParams', 'Event', function ($scope, $routeParams, Event) {
+    .controller('SingleEventController', ['$scope', '$routeParams', 'Event','Tag', function ($scope, $routeParams, Event, Tag) {
         $scope.event = Event.get({ id: $routeParams.id },function(){
             $scope.eventArray = [$scope.event];
+            Tag.tagsByEvent({eventId: $routeParams.id},function(success){
+                $scope.event.tags = success;
+            });
         });
-        console.log($scope.event);
 
 
     }])
