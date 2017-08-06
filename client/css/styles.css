@@ -200,12 +200,16 @@ html, body {
     margin-top:-8px;
     vertical-align: top;
 }
+#navbar, .container-fluid{
+    background-color: white;
+}
 nav{
     display: block;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    background-color: white;
 }
 
 .table th, .table td { 
@@ -283,4 +287,25 @@ table.table.info{
 .advBtn{
     margin-right: 25px;
     line-height: 35px;
+}
+#searchTagList{
+    position: absolute;
+    top: 50px;
+    z-index: 1000000;
+    left: 0;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    max-height: 165px;
+    border-radius: 5px;
+    border: solid 1px RGBA(221, 221, 221, 1.00);
+}
+#selectTagInput{
+    position: relative;
+
+}
+.searchTags{
+    margin: 12px 0;
+    text-align: right;
+    font-size: 16px;
 }

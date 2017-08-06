@@ -1,12 +1,63 @@
 angular.module('events.controllers', [])
-    .controller('EventListController', ['$scope','Category','Event','$http','Geo','Category', function ($scope,Category, Event,$http,Geo,Category) {
-        $scope.events = Event.query();
+    .controller('EventListController', ['$scope','Category','Event','$http','Geo','Category','Tag', function ($scope,Category, Event,$http,Geo,Category,Tag) {
+        $scope.events = [];
+
+        function initSearch(){
+            $scope.searchItems = {
+                tags: [],
+                catId: undefined,
+                startDate: undefined,
+                endDate: undefined,
+                petFriendly: 0,
+                familyFriendly: 0,
+                smokeFree: 0,
+                alcoholFree: 0,
+                isEighteen: 0,
+                isTwentyOne: 0,
+                outdoors: 0,
+                daytime: 0,
+                priceFree: 0,
+                priceOne: 0,
+                priceTwo: 0,
+                priceThree: 0,
+                cost: undefined
+            };
+        }
+        
+        initSearch();
+
+        Event.query(function(success){
+            for (var i = 0;i<success.length;i++){
+                success[i].tags = Tag.tagsByEvent({eventId: success[i].id});
+            }
+            $scope.events = success;
+            console.log($scope.events);
+        });
+
         $scope.cats = Category.query();
-        $scope.searchBtn = function(){
+        $scope.tags = Tag.query();
+        
+
+        $scope.resetBtn = function(){
+            initSearch();
+        }
+
+        $scope.selectTag = function(tag){
+            $scope.searchItems.tags.push({id: tag.id, tag: tag.tag});
+            $scope.allTags.tag = null;
             console.log($scope.searchItems);
         }
-        $('#startDate').datetimepicker();
-        $('#endDate').datetimepicker();
+        
+        $scope.removeTag = function(tag){
+            $scope.searchItems.tags.splice($scope.searchItems.tags.indexOf(tag),1);
+        }
+
+        $('#startDate').datetimepicker().on('dp.change',function(el){
+            $scope.searchItems.startDate = el.date._d;
+        });
+        $('#endDate').datetimepicker().on('dp.change',function(el){
+            $scope.searchItems.endDate = el.date._d;
+        });
 
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event','Tag', function ($scope, $routeParams, Event, Tag) {
@@ -198,8 +249,6 @@ angular.module('events.controllers', [])
             p.then(function(){
                 $scope.event.startDate = moment(startDate,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
                 $scope.event.endDate = moment(endDate,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-                console.log($scope.event.startDate);
-                console.log($scope.event.endDate);
                 $scope.event.$update(function() {
                     $location.replace().path('/' + $routeParams.id);
                 })
