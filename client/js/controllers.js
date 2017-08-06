@@ -1,10 +1,13 @@
 angular.module('events.controllers', [])
-    .controller('EventListController', ['$scope','Category','Event','$http','Geo', function ($scope,Category, Event,$http,Geo) {
+    .controller('EventListController', ['$scope','Category','Event','$http','Geo','Category', function ($scope,Category, Event,$http,Geo,Category) {
         $scope.events = Event.query();
         $scope.cats = Category.query();
         $scope.searchBtn = function(){
             console.log($scope.searchItems);
         }
+        $('#startDate').datetimepicker();
+        $('#endDate').datetimepicker();
+
     }])
     .controller('SingleEventController', ['$scope', '$routeParams', 'Event','Tag', function ($scope, $routeParams, Event, Tag) {
         $scope.event = Event.get({ id: $routeParams.id },function(){
@@ -16,15 +19,24 @@ angular.module('events.controllers', [])
 
 
     }])
-    .controller('ComposeEventController', ['$scope','Geo','$location', 'Event','$http','Tag', function ($scope, Geo, $location, Event,$http,Tag) {
+    .controller('ComposeEventController', ['$scope','$q','Geo','$location', 'Event','$http','Tag','Category', function ($scope, $q, Geo, $location, Event,$http,Tag,Category) {
+        
+        var startDate = '';
+        var endDate = '';
 
-        $('#startDate').datetimepicker();
-        $('#endDate').datetimepicker();
+        $('#startDate').datetimepicker().on('dp.change',function(el){
+            startDate = moment(el.date._d,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+        });
+        $('#endDate').datetimepicker().on('dp.change',function(el){
+            endDate = moment(el.date._d,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+        });
 
         $('[data-toggle="popover"]').popover();
         $scope.allTags = {tag: null};
         $scope.tags = Tag.query();
         
+        $scope.categories = Category.query();
+
         $scope.checkTagLength = function(){
             if($scope.allTags.tag == "" || null){
                 $scope.allTags.tag = null;
@@ -67,35 +79,52 @@ angular.module('events.controllers', [])
 
         $scope.save = function () {
             var p = new Event($scope.event);
-            $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-            $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+            p.startDate = startDate;
+            p.endDate = endDate;
             Geo.retrieve($scope.event.address1, $scope.event.city, $scope.event.state)
-                .then(function(success){
-                    $scope.event.lat = success.lat;
-                    $scope.event.lng = success.lng;
-                    p.$save(function (success) {
-                        id = success.id;
-                        for(var i=0;i<$scope.badges.length;i++){
-                            Event.tagEvent({id: id, tagId: $scope.badges[i].id})
-                        }
-                        $location.path('/');
-                    }, function (err) {
-                        console.log(err);
-                    });
-                },function(err){
-
+            .then(function(success){
+                console.log(success.lat);
+                p.lat = success.lat;
+                p.lng = success.lng;
+                console.log(p);
+                p.$save(function (success) {
+                    id = success.id;
+                    for(var i=0;i<$scope.badges.length;i++){
+                        Event.tagEvent({id: id, tagId: $scope.badges[i].id})
+                    }
+                    $location.path('/');
+                }, function (err) {
+                    console.log(err);
                 });
+            },function(err){})
         }
-        
-
     }])
-    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', 'Tag',function ($scope, $location, $routeParams, Event, Geo,Tag) {
+    .controller('UpdateEventController', ['$scope', '$location', '$routeParams', 'Event','Geo', 'Tag','Category',function ($scope, $location, $routeParams, Event, Geo,Tag,Category) {
         $scope.addressChange = false;
-        $('#startDate').datetimepicker();
-        $('#endDate').datetimepicker();
+        var startDate = '';
+        var endDate = '';
+
+        $scope.categories = Category.query();        
+        Event.get({id: $routeParams.id}, function(success) {
+            $scope.event = success;
+            startDate = moment(moment.utc(success.startDate).toDate()).format('MM/DD/YYYY hh:mm A');
+            endDate = moment(moment.utc(success.endDate).toDate()).format('MM/DD/YYYY hh:mm A');
+            console.log(endDate)
+            $('#startDate').datetimepicker({
+                date: startDate,
+                format: 'MM/DD/YYYY hh:mm A'
+            }).on('dp.change',function(el){
+                startDate = el.date._d;
+            });
+            $('#endDate').datetimepicker({
+                date: endDate,
+                format: 'MM/DD/YYYY hh:mm A'
+            }).on('dp.change',function(el){
+                endDate = el.date._d;
+            });
+        })
 
         $scope.allTags = null;
-        
         getTags();
         
         function getTags(){
@@ -157,12 +186,6 @@ angular.module('events.controllers', [])
             }    
         }
 
-        Event.get({id: $routeParams.id}, function(success) {
-            $scope.event = success;
-            $scope.event.startDate = moment(moment.utc(success.startDate).toDate()).format('MM/DD/YYYY hh:mm A');
-            $scope.event.endDate = moment(moment.utc(success.endDate).toDate()).format('MM/DD/YYYY hh:mm A');
-        })
-
         $scope.save = function() {
             var p = Promise.resolve();
             if($scope.addressChange === true){
@@ -173,8 +196,10 @@ angular.module('events.controllers', [])
                 })
             }
             p.then(function(){
-                $scope.event.startDate = moment($('#startDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
-                $scope.event.endDate = moment($('#endDate').val(),'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+                $scope.event.startDate = moment(startDate,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+                $scope.event.endDate = moment(endDate,'MM/DD/YYYY hh:mm A').format('YYYY-MM-DD HH:mm:ss');
+                console.log($scope.event.startDate);
+                console.log($scope.event.endDate);
                 $scope.event.$update(function() {
                     $location.replace().path('/' + $routeParams.id);
                 })

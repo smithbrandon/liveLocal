@@ -280,3 +280,7 @@ table.table.info{
     font-size: 16px;
     line-height: 24px;
 }
+.advBtn{
+    margin-right: 25px;
+    line-height: 35px;
+}

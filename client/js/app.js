@@ -43,5 +43,16 @@ angular.module('events', ['ngRoute', 'ngResource', 'events.controllers', 'events
             }
         }
     }
+}).filter('searchFilter',function(){
+    return function(event, criteria){
+        if(!criteria){
+            return event;
+        }
+        console.log(event);
+        console.log(criteria);
+        if(event.petFriendly === 1 && criteria.petFriendly === true){
+            return event;
+        }
+    }    
 });
 

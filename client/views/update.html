@@ -21,6 +21,8 @@
                         <h1 class="panel-title">Description:</h1>
                             <br>
                             <textarea ng-model="event.description" class="col-sm-12 form-rounded" type="text" name="description" required placeholder="Description"></textarea>
+                            <h1 class="panel-title">Category:</h1><br>
+                    <select ng-options="cat.id as cat.name for cat in categories" ng-model="event.catId"></select>
                 </div>
             </div>
 
@@ -190,7 +192,7 @@
                                 <div class='col-sm-6'>
                                     <div class="form-group">
                                         <div class='input-group date' id='datetimepicker1'>
-                                            <input ng-model="event.startDate" ng-value="event.startDate" id="startDate" type='text' class="form-control form-rounded" />
+                                            <input id="startDate" type='text' class="form-control form-rounded" />
                                             <span class="input-group-addon" id="input-select">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -207,7 +209,7 @@
                             <div class='col-sm-6'>
                                 <div class="form-group">
                                     <div class='input-group date' id='datetimepicker2'>
-                                        <input ng-model="event.endDate" ng-value="event.endDate" id="endDate" type='text' class="form-control form-rounded" />
+                                        <input id="endDate" type='text' class="form-control form-rounded"  />
                                         <span class="input-group-addon" id="input-select">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
